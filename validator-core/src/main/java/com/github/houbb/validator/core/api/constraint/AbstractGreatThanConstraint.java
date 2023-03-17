@@ -7,20 +7,20 @@ import com.github.houbb.validator.core.i18n.I18N;
 /**
  * 抽象大于约束实现
  * @author binbin.hou
- * @since 0.0.3
+ * @since 0.3.0
  */
 @ThreadSafe
 public class AbstractGreatThanConstraint<T extends Comparable> extends AbstractConstraint {
 
     /**
      * 是否包含等于，默认为等于
-     * @since 0.0.3
+     * @since 0.3.0
      */
     protected final boolean inclusive;
 
     /**
      * 预期的值
-     * @since 0.0.3
+     * @since 0.3.0
      */
     protected final T expect;
 
@@ -28,7 +28,7 @@ public class AbstractGreatThanConstraint<T extends Comparable> extends AbstractC
      * 抽象构造器
      * @param inclusive 是否包含
      * @param expect 预期值
-     * @since 0.0.3
+     * @since 0.3.0
      */
     public AbstractGreatThanConstraint(boolean inclusive, T expect) {
         this.inclusive = inclusive;
@@ -38,7 +38,7 @@ public class AbstractGreatThanConstraint<T extends Comparable> extends AbstractC
     /**
      * 抽象构造器
      * @param expect 预期值
-     * @since 0.0.3
+     * @since 0.3.0
      */
     public AbstractGreatThanConstraint(T expect) {
         this(true, expect);

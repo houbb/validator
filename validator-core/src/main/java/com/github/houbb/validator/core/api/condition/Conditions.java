@@ -7,7 +7,7 @@ import com.github.houbb.validator.api.api.condition.ICondition;
 /**
  * 条件工具类
  * @author binbin.hou
- * @since 0.0.3
+ * @since 0.3.0
  */
 public final class Conditions {
 

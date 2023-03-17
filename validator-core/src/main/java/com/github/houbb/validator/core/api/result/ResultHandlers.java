@@ -8,7 +8,7 @@ import com.github.houbb.validator.api.api.result.IResultHandler;
 /**
  * 结果处理工具类
  * @author binbin.hou
- * @since 0.0.3
+ * @since 0.3.0
  */
 @ThreadSafe
 public final class ResultHandlers {

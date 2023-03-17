@@ -24,7 +24,9 @@ import com.github.houbb.validator.core.api.condition.context.DefaultConditionCon
 import com.github.houbb.validator.core.api.validator.entry.ValidEntry;
 import com.github.houbb.validator.core.api.validator.entry.ValidEntryInstanceContext;
 import com.github.houbb.validator.core.constant.AnnotationConst;
+import com.github.houbb.validator.core.jsr.util.JsrAtConstraintMapUtil;
 
+import javax.validation.ConstraintValidator;
 import javax.validation.Valid;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -192,12 +194,29 @@ public class DefaultValidator extends AbstractValidator {
      * @since 0.2.0
      */
     protected Optional<IAnnotationConstraint> constraintOptional(final Annotation annotation) {
+        // 系统内置的实现
         Constraint constraint = annotation.annotationType().getAnnotation(Constraint.class);
         if (ObjectUtil.isNotNull(constraint)) {
             Class<? extends IAnnotationConstraint> clazz = constraint.value();
             return Optional.of(ClassUtil.newInstance(clazz));
         }
 
+        // 0.3.0 兼容 jsr
+        javax.validation.Constraint jsrConstraint = annotation.annotationType().getAnnotation(javax.validation.Constraint.class);
+        if(ObjectUtil.isNotNull(jsrConstraint)) {
+            // 如果为空，则直接看有没有对应注解实现
+            // FIXED 1.6.0 不能使用 MAP，会导致相同的注解属性覆盖。
+            IAnnotationConstraint annotationConstraint = JsrAtConstraintMapUtil.get(annotation.annotationType());
+            return Optional.ofNullable(annotationConstraint);
+
+            // 暂时不处理自定义的 jsr-303 注解
+//            Class<? extends ConstraintValidator<?, ?>>[] validatedBy = jsrConstraint.validatedBy();
+//            if(ArrayUtil.isNotEmpty(validatedBy)) {
+//                return Optional.empty();
+//            }
+        }
+
+        // 返回空
         return Optional.empty();
     }
 

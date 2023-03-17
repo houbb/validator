@@ -168,7 +168,7 @@ public final class ValidBs {
      * 指定失败类型
      * @param fail 失败类型实现
      * @return this
-     * @since 0.0.3
+     * @since 0.3.0
      */
     public ValidBs fail(final IFail fail) {
         ArgUtil.notNull(fail, "fail");

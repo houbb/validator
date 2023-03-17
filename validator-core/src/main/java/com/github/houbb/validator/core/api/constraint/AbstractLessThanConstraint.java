@@ -7,20 +7,20 @@ import com.github.houbb.validator.core.i18n.I18N;
 /**
  * 抽象小于等于约束实现
  * @author binbin.hou
- * @since 0.0.3
+ * @since 0.3.0
  */
 @ThreadSafe
 public class AbstractLessThanConstraint<T extends Comparable> extends AbstractConstraint {
 
     /**
      * 是否包含等于，默认为等于
-     * @since 0.0.3
+     * @since 0.3.0
      */
     protected final boolean inclusive;
 
     /**
      * 预期的值
-     * @since 0.0.3
+     * @since 0.3.0
      */
     protected final T expect;
 
@@ -32,7 +32,7 @@ public class AbstractLessThanConstraint<T extends Comparable> extends AbstractCo
     /**
      * 默认为包含等于的情况
      * @param expect 预期值
-     * @since 0.0.3
+     * @since 0.3.0
      */
     public AbstractLessThanConstraint(T expect) {
         this(true, expect);

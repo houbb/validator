@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  * 抽象组合约束实现
  * 适用场景：一个注解对应多个约束实现类。
  * @author binbin.hou
- * @since 0.0.3
+ * @since 0.3.0
  */
 @ThreadSafe
 public abstract class AbstractCombineConstraint extends AbstractConstraint {
@@ -18,7 +18,7 @@ public abstract class AbstractCombineConstraint extends AbstractConstraint {
      * 获取对应的约束实现
      * @param context 上下文
      * @return 约束实现
-     * @since 0.0.3
+     * @since 0.3.0
      */
     protected abstract AbstractConstraint getConstraintInstance(final IConstraintContext context);
 
@@ -26,7 +26,7 @@ public abstract class AbstractCombineConstraint extends AbstractConstraint {
      * 对值进行处理
      * @param value  值
      * @return 格式化后的结果
-     * @since 0.0.3
+     * @since 0.3.0
      */
     protected Object formatValue(final Object value) {
         // 字符串相关进行处理

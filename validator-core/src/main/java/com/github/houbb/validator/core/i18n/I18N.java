@@ -34,7 +34,10 @@ public final class I18N {
     public static String get(final String key) {
         Locale currentLocale = Locale.getDefault();
         ResourceBundle myResources = ResourceBundle.getBundle(DEFAULT_PROPERTIES_FILE_NAME, currentLocale);
-        return myResources.getString(key);
+
+        // jsr 做一次映射
+        String mapKey = JavaxValidMessageUtil.getMapKey(key);
+        return myResources.getString(mapKey);
     }
 
     /**
@@ -88,6 +91,25 @@ public final class I18N {
          * "great than or equals "
          */
         public static final String GREAT_THAN = "GREAT_THAN";
+
+        /**
+         * 大小必须在指定范围内
+         * @since 0.3.0
+         */
+        public static final String SIZE_MUST_BE_IN = "sizeMustBeIn";
+
+        /**
+         * 必须匹配正则
+         * @since 0.3.0
+         */
+        public static final String MATCH_REGEX_PATTERN = "matchRegexPattern";
+
+        /**
+         * 整数小数位数
+         * @since 0.3.0
+         */
+        public static final String INTEGER_DIGITS_FRACTION_DIGITS = "integerDigitsFractionDigits";
+
     }
 
 }

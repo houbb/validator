@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * 抽象约束实现
  * @author binbin.hou
- * @since 0.0.3
+ * @since 0.3.0
  * @param <T> 泛型
  */
 @ThreadSafe
@@ -31,7 +31,7 @@ public abstract class AbstractConstraint<T> implements IConstraint {
      * @param context 上下文
      * @param value 当前校验值
      * @return 是否通过
-     * @since 0.0.3
+     * @since 0.3.0
      */
     protected abstract boolean pass(final IConstraintContext context, final T value);
 
@@ -39,7 +39,7 @@ public abstract class AbstractConstraint<T> implements IConstraint {
      * 预期值
      * @param context 上下文
      * @return 预期值字符串描述
-     * @since 0.0.3
+     * @since 0.3.0
      */
     protected String expectValue(final IConstraintContext context) {
         return StringUtil.EMPTY;
@@ -54,7 +54,7 @@ public abstract class AbstractConstraint<T> implements IConstraint {
      * （3）结合 {@link IConstraintContext#putAttr(String, Object)} 设置和获取
      * @param context 上下文
      * @return 确切的值
-     * @since 0.0.3
+     * @since 0.3.0
      */
     protected String actualValue(final IConstraintContext context) {
         return StringUtil.objectToString(context.value());
@@ -63,7 +63,7 @@ public abstract class AbstractConstraint<T> implements IConstraint {
     /**
      * 获取支持的数据类型列表
      * @return 支持的类型列表
-     * @since 0.0.3
+     * @since 0.3.0
      */
     protected List<Class> getSupportClassList() {
         List<Class> classList = Guavas.newArrayList(1);
@@ -74,7 +74,7 @@ public abstract class AbstractConstraint<T> implements IConstraint {
     /**
      * 约束名称
      * @return 约束实现名称
-     * @since 0.0.3
+     * @since 0.3.0
      */
     protected String constraintName() {
         // 获取当前实现类的名称
@@ -87,7 +87,7 @@ public abstract class AbstractConstraint<T> implements IConstraint {
      * （2）如果用户指定了自己的描述，则直接返回用户自定义的信息。@since 0.2.0
      * @param context 上下文
      * @return 信息描述
-     * @since 0.0.3
+     * @since 0.3.0
      */
     protected String message(final IConstraintContext context) {
         final String defineMsg = context.message();
@@ -151,7 +151,7 @@ public abstract class AbstractConstraint<T> implements IConstraint {
      * 根据 JDK-303 标准，除了 javax.validation.constraints.NotNull 需要验证为 Null,其他都是通过的。
      * @param value 值
      * @return 是否通过
-     * @since 0.0.3
+     * @since 0.3.0
      */
     protected boolean isNullPass(final T value) {
         if(ObjectUtil.isNull(value)) {
@@ -196,7 +196,7 @@ public abstract class AbstractConstraint<T> implements IConstraint {
      * （3）数组的支持，通过类型 {@link Array} 进行指定。
      * @param valueClassType 当前字段类型
      * @return true
-     * @since 0.0.3
+     * @since 0.3.0
      */
     @SuppressWarnings("unchecked")
     private boolean supportClassType(final Class valueClassType) {
@@ -220,7 +220,7 @@ public abstract class AbstractConstraint<T> implements IConstraint {
      * （1）null 默认支持
      * （2）防止痴呆设计，自动提示出支持的数据类型。
      * @param context 上下文
-     * @since 0.0.3
+     * @since 0.3.0
      */
     private void supportType(final IConstraintContext context) {
         final Object value = context.value();

@@ -1,7 +1,7 @@
 package com.github.houbb.validator.test.util;
 
 import com.github.houbb.validator.api.exception.ValidRuntimeException;
-import com.github.houbb.validator.core.util.ValidatorHelper;
+import com.github.houbb.validator.core.util.ValidHelper;
 import com.github.houbb.validator.test.model.User;
 import org.junit.Test;
 
@@ -13,12 +13,24 @@ import org.junit.Test;
  */
 public class CoreValidHelperTest {
 
+    @Test
+    public void failOverTest() {
+        try {
+            User user = new User();
+            user.sex("what").password("old").password2("new");
+
+            ValidHelper.failOverThrow(user);
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
     @Test(expected = ValidRuntimeException.class)
     public void failFastTest() {
         User user = new User();
         user.sex("what").password("old").password2("new");
 
-        ValidatorHelper.failFastThrow(user);
+        ValidHelper.failFastThrow(user);
     }
 
 }

@@ -11,9 +11,9 @@ import com.github.houbb.validator.core.bs.ValidBs;
  * @author binbin.hou
  * @since 0.2.0
  */
-public final class ValidatorHelper {
+public final class ValidHelper {
 
-    private ValidatorHelper(){}
+    private ValidHelper(){}
 
     /**
      * 全部验证后返回
