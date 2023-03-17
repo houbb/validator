@@ -39,7 +39,7 @@ public interface IConstraintResult {
      * 预期值
      * （1）主要用于约束验证链信息拼接。
      * @return 预期值
-     * @since 0.0.4
+     * @since 0.2.0
      */
     String expectValue();
 

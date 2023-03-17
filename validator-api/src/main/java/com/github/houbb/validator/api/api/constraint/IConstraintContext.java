@@ -21,14 +21,14 @@ public interface IConstraintContext {
     /**
      * 指定描述消息
      * @return 描述消息
-     * @since 0.0.4
+     * @since 0.2.0
      */
     String message();
 
     /**
      * 失败模式
      * @return 失败模式
-     * @since 0.0.4
+     * @since 0.2.0
      */
     IFail fail();
 
@@ -37,7 +37,7 @@ public interface IConstraintContext {
      * @param key key
      * @param object 值
      * @return this
-     * @since 0.0.4
+     * @since 0.2.0
      */
     IConstraintContext putAttr(final String key, final Object object);
 
@@ -45,7 +45,7 @@ public interface IConstraintContext {
      * 获取属性值
      * @param key key
      * @return this
-     * @since 0.0.4
+     * @since 0.2.0
      */
     Object getAttr(final String key);
 
