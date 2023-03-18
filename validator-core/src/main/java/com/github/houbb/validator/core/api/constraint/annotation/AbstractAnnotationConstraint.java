@@ -46,7 +46,6 @@ public abstract class AbstractAnnotationConstraint<A extends Annotation> impleme
     @Override
     public IConstraintResult constraint(IConstraintContext context) {
         IConstraint constraint = buildConstraint(this.annotation);
-        System.out.println(this.annotation + "---------------" + context);
         return constraint.constraint(context);
     }
 

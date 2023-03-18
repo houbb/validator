@@ -66,7 +66,6 @@ public class ValidBsTest {
                 .on("12", Constraints.sizeConstraint(5, 10),
                         Constraints.sizeConstraint(10, 20))
                 .fail(Fails.failOver())
-                .validator()
                 .valid();
 
         Assert.assertEquals(2, result.notPassList().size());

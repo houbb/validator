@@ -44,7 +44,7 @@ public class PastConstraintTest {
     public void notPassTest() {
         Date testDate = DateUtil.getFormatDate("90120101", DateUtil.PURE_DATE_FORMAT);
         IResult result = ValidBs.on(testDate, Constraints.pastConstraint(new Date()))
-                .validator()
+
                 .valid();
         Assert.assertFalse(result.pass());
         System.out.println(result);
@@ -57,7 +57,6 @@ public class PastConstraintTest {
     @Test(expected = ClassCastException.class)
     public void unSupportClassTypeTest() {
         IResult result = ValidBs.on(123, Constraints.pastConstraint())
-                .validator()
                 .valid();
         Assert.assertFalse(result.pass());
         System.out.println(result);

@@ -84,7 +84,8 @@ public class DefaultValidator extends AbstractValidator {
                     .fieldList(fieldContext.fieldList())
                     .instance(instance)
                     .value(fieldValue)
-                    .currentField(field);
+                    .currentField(field)
+                    .constraint(annotationConstraint);
             validatorEntryList.add(validatorEntry);
         }
 

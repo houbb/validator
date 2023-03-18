@@ -23,7 +23,7 @@ public class NullConstraintTest {
     @Test
     public void nullNotPassTest() {
         IResult result = ValidBs.on("", Constraints.nullConstraint())
-                .validator()
+
                 .valid();
         Assert.assertFalse(result.pass());
         System.out.println(result);

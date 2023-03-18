@@ -32,7 +32,6 @@ public class AssertTrueConstraintTest {
     @Test
     public void notPassTest() {
         IResult result = ValidBs.on(false, Constraints.assertTrueConstraint())
-                .validator()
                 .valid();
         Assert.assertFalse(result.pass());
         System.out.println(result);

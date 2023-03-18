@@ -45,7 +45,6 @@ public class FutureConstraintTest {
     public void notPassTest() {
         Date testDate = DateUtil.getFormatDate("20190101", DateUtil.PURE_DATE_FORMAT);
         IResult result = ValidBs.on(testDate, Constraints.futureConstraint(new Date()))
-                .validator()
                 .valid();
         Assert.assertFalse(result.pass());
         System.out.println(result);
@@ -58,7 +57,6 @@ public class FutureConstraintTest {
     @Test(expected = ClassCastException.class)
     public void unSupportClassTypeTest() {
         IResult result = ValidBs.on(123, Constraints.futureConstraint())
-                .validator()
                 .valid();
         Assert.assertFalse(result.pass());
         System.out.println(result);

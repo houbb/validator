@@ -9,9 +9,9 @@ import org.junit.Test;
  * ValidHelper 测试工具类
  *
  * @author binbin.hou
- * @since 0.1.4
+ * @since 0.3.0
  */
-public class CoreValidHelperTest {
+public class ValidHelperTest {
 
     @Test
     public void failOverTest() {

@@ -31,7 +31,6 @@ public class NotBlankConstraintTest {
     @Test
     public void notPassTest() {
         IResult result = ValidBs.on(true, Constraints.assertFalseConstraint())
-                .validator()
                 .valid();
         Assert.assertFalse(result.pass());
         System.out.println(result);
@@ -40,7 +39,6 @@ public class NotBlankConstraintTest {
     @Test(expected = ClassCastException.class)
     public void unSupportClassTypeTest() {
         IResult result = ValidBs.on("123", Constraints.assertFalseConstraint())
-                .validator()
                 .valid();
         Assert.assertFalse(result.pass());
         System.out.println(result);

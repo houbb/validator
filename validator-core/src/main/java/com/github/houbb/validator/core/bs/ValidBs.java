@@ -15,6 +15,7 @@ import com.github.houbb.validator.api.api.validator.IValidatorContext;
 import com.github.houbb.validator.core.api.fail.Fails;
 import com.github.houbb.validator.core.api.result.ResultHandlers;
 import com.github.houbb.validator.core.api.validator.DefaultValidator;
+import com.github.houbb.validator.core.api.validator.Validators;
 import com.github.houbb.validator.core.api.validator.context.DefaultValidatorContext;
 import com.github.houbb.validator.core.api.validator.entry.ValidEntry;
 
@@ -49,6 +50,12 @@ public final class ValidBs {
     private IFail fail = Fails.failFast();
 
     /**
+     * 验证器
+     * @since 0.3.0
+     */
+    private IValidator validator  = Validators.defaults();
+
+    /**
      * 验证组信息
      * （1）如果不指定，则说明验证所有约束条件
      * （2）如果指定列表，则只验证符合当前 groupCondition 的约束条件。
@@ -67,18 +74,6 @@ public final class ValidBs {
      * @since 0.1.0
      */
     private Object value;
-
-    /**
-     * 约束验证结果列表
-     * @since 0.1.0
-     */
-    private List<IConstraintResult> constraintResults;
-
-    /**
-     * 是否已经执行验证
-     * @since 0.1.0
-     */
-    private volatile boolean validated = false;
 
     /**
      * 指定验证的相关信息
@@ -107,7 +102,6 @@ public final class ValidBs {
     private static ValidBs on(final Object value,
                              final Collection<? extends IValidEntry> validatorEntries) {
         ValidBs validBs = new ValidBs();
-        validBs.validated = false;
         validBs.value = value;
         validBs.validatorEntries = buildValidatorEntries(value, validatorEntries);
         return validBs;
@@ -201,25 +195,9 @@ public final class ValidBs {
     public ValidBs validator(final IValidator validator) {
         ArgUtil.notNull(validator, "validator");
 
-        // 验证上下文构建
-        IValidatorContext context = DefaultValidatorContext.newInstance()
-                .fail(fail)
-                .group(group)
-                .value(value)
-                .validatorEntries(validatorEntries);
+        this.validator = validator;
 
-        this.constraintResults = validator.valid(context);
-        this.validated = true;
         return this;
-    }
-
-    /**
-     * 默认验证类验证
-     * @return this
-     * @since 0.1.0
-     */
-    public ValidBs validator() {
-        return this.validator(DefaultValidator.getInstance());
     }
 
     /**
@@ -234,11 +212,16 @@ public final class ValidBs {
     public <T> T valid(final IResultHandler<T> resultHandler) {
         ArgUtil.notNull(resultHandler, "resultHandler");
 
-        // 对结果进行处理
-        if(!validated) {
-            this.validator();
-        }
-        return resultHandler.handle(this.constraintResults);
+        // 验证上下文构建
+        IValidatorContext context = DefaultValidatorContext.newInstance()
+                .fail(fail)
+                .group(group)
+                .value(value)
+                .validatorEntries(validatorEntries)
+                ;
+
+        List<IConstraintResult> resultList = validator.valid(context);
+        return resultHandler.handle(resultList);
     }
 
     /**

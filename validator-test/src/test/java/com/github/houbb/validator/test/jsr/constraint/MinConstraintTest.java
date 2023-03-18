@@ -39,7 +39,7 @@ public class MinConstraintTest {
     @Test
     public void notPassTest() {
         IResult result = ValidBs.on(99, Constraints.minConstraint(100))
-                .validator()
+
                 .valid();
         Assert.assertFalse(result.pass());
         System.out.println(result);
@@ -51,7 +51,7 @@ public class MinConstraintTest {
     @Test(expected = ClassCastException.class)
     public void classCastException() {
         IResult result = ValidBs.on(123.34f, Constraints.minConstraint(100))
-                .validator()
+
                 .valid();
         System.out.println(result);
     }

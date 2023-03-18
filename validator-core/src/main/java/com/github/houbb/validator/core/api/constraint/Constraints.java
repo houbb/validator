@@ -78,7 +78,7 @@ public final class Constraints {
      * @since 0.0.3
      */
     public static IConstraint assertTrueConstraint() {
-        return new AtAssertTrueConstraint();
+        return new AssertTrueConstraint();
     }
 
     /**
@@ -86,7 +86,7 @@ public final class Constraints {
      * @since 0.0.3
      */
     public static IConstraint assertFalseConstraint() {
-        return new AtAssertFalseConstraint();
+        return new AssertFalseConstraint();
     }
 
     /**

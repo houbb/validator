@@ -76,7 +76,7 @@ public class DigitsConstraintTest {
     @Test
     public void notPassTest() {
         IResult result = ValidBs.on("123456", Constraints.digitsConstraint(5))
-                .validator()
+
                 .valid();
         Assert.assertFalse(result.pass());
         System.out.println(result);
@@ -89,7 +89,7 @@ public class DigitsConstraintTest {
     @Test(expected = ClassCastException.class)
     public void unSupportClassTypeTest() {
         IResult result = ValidBs.on(12345, Constraints.sizeConstraint(1, 2))
-                .validator()
+
                 .valid();
     }
 

@@ -39,7 +39,6 @@ public class ValidBsValidEntryTest {
                 .message("自定义：指定值不能为空");
 
         IResult result = ValidBs.on(null, validEntry)
-                .validator()
                 .valid();
 
         Assert.assertEquals("自定义：指定值不能为空", result.notPassList().get(0).message());

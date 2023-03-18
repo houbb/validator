@@ -14,7 +14,7 @@ import java.util.List;
  * @since 0.0.3
  */
 @ThreadSafe
-class AssertFalseConstraint extends AbstractConstraint {
+public class AssertFalseConstraint extends AbstractConstraint {
 
     /**
      * 唯一实例
