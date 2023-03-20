@@ -76,6 +76,7 @@ public final class Constraints {
     /**
      * @return 为 true 约束条件
      * @since 0.0.3
+     * @see javax.validation.constraints.AssertTrue
      */
     public static IConstraint assertTrueConstraint() {
         return new AssertTrueConstraint();
@@ -84,6 +85,7 @@ public final class Constraints {
     /**
      * @return 为 false 约束条件
      * @since 0.0.3
+     * @see javax.validation.constraints.AssertFalse
      */
     public static IConstraint assertFalseConstraint() {
         return new AssertFalseConstraint();
@@ -92,6 +94,7 @@ public final class Constraints {
     /**
      * @return 为 null 约束条件
      * @since 0.0.3
+     * @see javax.validation.constraints.Null
      */
     public static IConstraint nullConstraint() {
         return new NullConstraint();
@@ -100,6 +103,7 @@ public final class Constraints {
     /**
      * @return 不为 null 约束条件
      * @since 0.0.3
+     * @see javax.validation.constraints.NotNull
      */
     public static IConstraint notNullConstraint() {
         return new NotNullConstraint();
@@ -109,6 +113,7 @@ public final class Constraints {
      * 是否在当前时间之前约束条件
      * @return 约束条件
      * @since 0.0.3
+     * @see javax.validation.constraints.Past
      */
     public static IConstraint pastConstraint() {
         return new PastConstraint(new Date());
@@ -138,6 +143,7 @@ public final class Constraints {
      * 是否在当前时间之后约束条件
      * @return 约束条件
      * @since 0.0.3
+     * @see javax.validation.constraints.Future
      */
     public static IConstraint futureConstraint() {
         return new FutureConstraint(new Date());
@@ -168,6 +174,7 @@ public final class Constraints {
      * @param regex 正则表达式
      * @return 约束条件
      * @since 0.0.3
+     * @see javax.validation.constraints.Pattern
      */
     public static IConstraint patternConstraint(final String regex) {
         return new PatternConstraint(regex);
@@ -179,6 +186,7 @@ public final class Constraints {
      * @param max 最大值
      * @return 约束条件
      * @since 0.0.3
+     * @see javax.validation.constraints.Size
      */
     public static IConstraint sizeConstraint(final int min, final int max) {
         return new SizeConstraint(min, max);
@@ -210,6 +218,7 @@ public final class Constraints {
      * @param fraction 精度
      * @return 约束条件
      * @since 0.0.3
+     * @see javax.validation.constraints.Digits
      */
     public static IConstraint digitsConstraint(final int integer, final int fraction) {
         return new DigitsConstraint(integer, fraction);
@@ -230,6 +239,7 @@ public final class Constraints {
      * @param charSequence 阈值
      * @return 约束条件
      * @since 0.0.3
+     * @see javax.validation.constraints.DecimalMax
      */
     public static IConstraint decimalMaxConstraint(final CharSequence charSequence) {
         return new DecimalMaxConstraint(charSequence);
@@ -251,6 +261,7 @@ public final class Constraints {
      * @param charSequence 阈值
      * @return 约束条件
      * @since 0.0.3
+     * @see javax.validation.constraints.DecimalMin
      */
     public static IConstraint decimalMinConstraint(final CharSequence charSequence) {
         return new DecimalMinConstraint(charSequence);
@@ -273,6 +284,7 @@ public final class Constraints {
      * @param expect 阈值
      * @return 约束条件
      * @since 0.0.3
+     * @see javax.validation.constraints.Min
      */
     public static IConstraint minConstraint(final boolean inclusive, final long expect) {
         return new MinConstraint(inclusive, expect);
@@ -294,6 +306,7 @@ public final class Constraints {
      * @param expect 阈值
      * @return 约束条件
      * @since 0.0.3
+     * @see javax.validation.constraints.Max
      */
     public static IConstraint maxConstraint(final boolean inclusive, final long expect) {
         return new MaxConstraint(inclusive, expect);
@@ -313,6 +326,7 @@ public final class Constraints {
      * 不能为空格
      * @return 空格
      * @since 0.2.0
+     * @see org.hibernate.validator.constraints.NotBlank
      */
     public static IConstraint notBlankConstraint() {
         return new NotBlankConstraint();
@@ -322,6 +336,7 @@ public final class Constraints {
      * 不能为空
      * @return 为空
      * @since 0.2.0
+     * @see org.hibernate.validator.constraints.NotEmpty
      */
     public static IConstraint notEmptyConstraint() {
         return new NotEmptyConstraint();
@@ -333,6 +348,7 @@ public final class Constraints {
      * @param max 最大值
      * @return 长度约束
      * @since 0.2.0
+     * @see org.hibernate.validator.constraints.Length
      */
     public static IConstraint lengthConstraint(final int min, final int max) {
         return new LengthConstraint(min, max);
@@ -342,6 +358,7 @@ public final class Constraints {
      * cnpj约束
      * @return 长度约束
      * @since 0.2.0
+     * @see org.hibernate.validator.constraints.br.CNPJ
      */
     public static IConstraint cnpjConstraint() {
         return new CNPJConstraint();
@@ -351,6 +368,7 @@ public final class Constraints {
      * CPF 约束
      * @return 长度约束
      * @since 0.2.0
+     * @see org.hibernate.validator.constraints.br.CPF
      */
     public static IConstraint cpfConstraint() {
         return new CPFConstraint();
@@ -360,6 +378,7 @@ public final class Constraints {
      * URL 约束
      * @return 长度约束
      * @since 0.2.0
+     * @see org.hibernate.validator.constraints.URL
      */
     public static IConstraint urlConstraint() {
         return new URLConstraint();
@@ -369,6 +388,7 @@ public final class Constraints {
      * EMAIL 约束
      * @return 长度约束
      * @since 0.2.0
+     * @see org.hibernate.validator.constraints.Email
      */
     public static IConstraint emailConstraint() {
         return new EmailConstraint();
@@ -378,6 +398,7 @@ public final class Constraints {
      * uniqueElements 约束
      * @return 长度约束
      * @since 0.2.0
+     * @see org.hibernate.validator.constraints.UniqueElements
      */
     public static IConstraint uniqueElementsConstraint() {
         return new UniqueElementsConstraint();
@@ -387,6 +408,7 @@ public final class Constraints {
      * Range 约束
      * @return 长度约束
      * @since 0.2.0
+     * @see org.hibernate.validator.constraints.Range
      */
     public static IConstraint rangeConstraint(long min, long max) {
         return new RangeConstraint(min, max);
