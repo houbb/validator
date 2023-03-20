@@ -89,7 +89,7 @@ Maven 3.X+
 <dependency>
     <groupId>com.github.houbb</groupId>
     <artifactId>validator-core</artifactId>
-    <version>0.3.0</version>
+    <version>0.4.0</version>
 </dependency>
 ```
 
@@ -145,7 +145,7 @@ public class User {
 
 ### ValidHelper 工具方法
 
-ValidHelper 作为统一封装的工具类，提供了常见的方法。
+ValidHelper 作为统一封装的工具类，提供了 java bean 校验常见的方法。
 
 方法列表：
 
@@ -231,7 +231,7 @@ public interface IResult {
 }
 ```
 
-# 注解说明
+# 约束注解说明
 
 java bean 的校验，基于注解是比较方便的。和 hibernate-validator 使用类似，这里介绍下常见的注解。
 
@@ -273,6 +273,137 @@ java bean 的校验，基于注解是比较方便的。和 hibernate-validator �
 | 19  | `@UniqueElements`    | 元素唯一约束条件      |
 | 20  | `@Range`    | 指定范围元素约束条件    |
 
+# 条件注解
+
+## 说明
+
+有时候我们需要根据不同的参数，进行不同的限制条件。
+
+比如新建时用户 id 不需要传入，但是修改时 id 必填。
+
+如果是传统的 hibernate-validator 处理就会比较麻烦，此处引入条件注解。
+
+## 内置注解 
+
+| 序号  | 注解                      | 说明        |
+|:----|:------------------------|:----------|
+| 1   | `@EqualsCondition`      | 等于指定值的条件  |
+| 2   | `@NotEqualsCondition`   | 不等于指定值的条件 |
+| 3   | `@AlwaysTrueCondition`  | 永远生效的条件   |
+| 4   | `@AlwaysFalseCondition` | 永远不生效的条件  |
+
+## 使用
+
+使用起来也不难，下面的效果如下：
+
+1. operType == 'create' 时，name 的校验才会生效。
+2. operType != 'create' 时，id 的校验才会生效。
+
+其他使用方式保持不变。
+
+```java
+public class ConditionUser {
+
+    /**
+     * 操作类型
+     */
+    @Ranges({"create", "edit"})
+    private String operType;
+
+    /**
+     * 新建时，name 必填
+     */
+    @EqualsCondition(value = "create", fieldName = "operType")
+    @Size(min = 3)
+    @NotNull
+    private String name;
+
+    /**
+     * 不是新建时, id 字段必填
+     */
+    @NotEqualsCondition(value = "create", fieldName = "operType")
+    @Size(min = 16)
+    private String id;
+    
+    //getter & setter
+}
+```
+
+# 过程式接口
+
+## 说明
+
+日常开发中，我们都很喜欢使用注解对 java bean 进行校验。
+
+但是这回导致我们定义的单个属性校验无法复用。
+
+所以项目中的单个属性校验和注解是一一对应的，为了便于复用。
+
+## ValidHelper 方法
+
+ValidHelper 作为统一封装的工具类，提供单个方法校验常见的方法。
+
+和 java bean 类似，方法列表：
+
+| 序号  | 方法                                 | 返回值     | 说明                                     |
+|:----|:-----------------------------------|:--------|:---------------------------------------|
+| 1   | failOver(final Object object, final IConstraint constraint)    | IResult | 全部验证后返回                                |
+| 2   | failFast(final Object object, final IConstraint constraint)      | IResult | 快速验证后返回                                |
+| 3   | failOverThrow(final Object object, final IConstraint constraint) | void    | 全部验证后返回-未通过抛出 ValidRuntimeException 异常 |
+| 4   | failFastThrow(final Object object, final IConstraint constraint) | void    | 快速验证后返回-未通过抛出 ValidRuntimeException 异常 |
+
+## 使用例子
+
+用法和 bean 的类似，只是入参多了第二个约束条件。
+
+```java
+IResult result = ValidHelper.failFast("", Constraints.notEmptyConstraint());
+```
+
+## IConstraint 对应关系
+
+注解和常见的接口方法一一对应，所有的约束方法在 `Constraints` 工具类中。 
+
+| 序号  | 注解             | 说明            | 对应方法                     |
+|:----|:---------------|:--------------|:-------------------------|
+| 1   | `@AssertTrue`  | 为 true 约束条件   | assertTrueConstraint     |
+| 2   | `@AssertFalse` | 为 false 约束条件  | assertFalseConstraint    |
+| 3   | `@Null`        | 为 null 约束条件   | nullConstraint           |
+| 4   | `@NotNull`     | 不为 null 约束条件  | notNullConstraint        |
+| 5   | `@Past`        | 是否在当前时间之前约束条件 | pastConstraint           |
+| 6   | `@Future`      | 是否在当前时间之后约束条件 | futureConstraint         |
+| 7   | `@Pattern`     | 正则表达式约束条件     | patternConstraint        |
+| 8   | `@Size`        | 在指定范围内的约束条件   | sizeConstraint           |
+| 9   | `@Digits`      | 数字位数的约束条件     | digitsConstraint         |
+| 10  | `@DecimalMax`  | 最大数字的约束条件     | decimalMaxConstraint     |
+| 11  | `@DecimalMin`  | 最小数字的约束条件     | decimalMinConstraint     |
+| 12  | `@Min`         | 最小的约束条件       | minConstraint            |
+| 13  | `@Max`         | 最大的约束条件       | maxConstraint            |
+| 13  | `@NotBlank`    | 不能为空格的约束条件    | notBlankConstraint       |
+| 14  | `@NotEmpty`    | 不能为空的约束条件     | notEmptyConstraint       |
+| 15  | `@Length`    | 长度的约束条件       | lengthConstraint         |
+| 16  | `@CNPJ`    | CNPJ 约束条件     | cnpjConstraint           |
+| 17  | `@CPF`    | CPF 约束条件      | cpfConstraint            |
+| 18  | `@URL`    | URL 约束条件      | urlConstraint            |
+| 18  | `@Email`    | Email 约束条件    | emailConstraint          |
+| 19  | `@UniqueElements`    | 元素唯一约束条件      | uniqueElementsConstraint |
+| 20  | `@Range`    | 指定范围元素约束条件    | rangeConstraint          |
+| 21   | `@AllEquals`     | 当前字段及其指定的字段 全部相等  | allEqualsConstraint      |
+| 22   | `@EnumRanges`  | 当前字段必须在枚举值指定的范围内 | enumRangesConstraint     |
+| 23   | `@HasNotNull`     | 当前字段及其指定的字段 至少有一个不为 null | hasNotNullConstraint     |
+| 24   | `@Ranges`     | 当前字段必须在指定的范围内 | rangesConstraint         |
+
+### 条件注解
+
+注解和常见的接口方法一一对应，所有的约束方法在 `Conditions` 工具类中。
+
+| 序号  | 注解                      | 说明        | 对应方法                |
+|:----|:------------------------|:----------|:--------------------|
+| 1   | `@EqualsCondition`      | 等于指定值的条件  | equalsCondition     |
+| 2   | `@NotEqualsCondition`   | 不等于指定值的条件 | notEqualsCondition  |
+| 3   | `@AlwaysTrueCondition`  | 永远生效的条件   | alwaysTrueCondition |
+| 4   | `@AlwaysFalseCondition` | 永远不生效的条件  | alwaysFalseCondition |
+
 # 开源地址
 
 > [validator](https://github.com/houbb/validator)
@@ -281,10 +412,12 @@ java bean 的校验，基于注解是比较方便的。和 hibernate-validator �
 
 - [ ] springboot 整合
 
+- [ ] i18N 對應的描述信息
+
+- [ ] 更多约束条件
+
 phone
 
 idNo
 
 银行卡
-
-- [ ] i18N 對應的描述信息

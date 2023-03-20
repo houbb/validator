@@ -1,6 +1,5 @@
 package com.github.houbb.validator.core.api.condition;
 
-import com.github.houbb.heaven.support.instance.impl.Instances;
 import com.github.houbb.heaven.util.common.ArgUtil;
 import com.github.houbb.validator.api.api.condition.ICondition;
 
@@ -19,7 +18,7 @@ public final class Conditions {
      * @return 条件实现
      */
     public static ICondition alwaysTrueCondition() {
-        return Instances.singleton(AlwaysTrueCondition.class);
+        return new AlwaysTrueCondition();
     }
 
     /**
@@ -28,7 +27,7 @@ public final class Conditions {
      * @return 条件实现
      */
     public static ICondition alwaysFalseCondition() {
-        return Instances.singleton(AlwaysFalseCondition.class);
+        return new AlwaysFalseCondition();
     }
 
     /**
@@ -37,7 +36,7 @@ public final class Conditions {
      * @return 条件实现
      */
     public static ICondition groupCondition() {
-        return Instances.singleton(GroupCondition.class);
+        return new GroupCondition();
     }
 
     /**
