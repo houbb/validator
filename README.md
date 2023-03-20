@@ -151,10 +151,10 @@ ValidHelper 作为统一封装的工具类，提供了 java bean 校验常见的
 
 | 序号  | 方法                            | 返回值     | 说明                                     |
 |:----|:------------------------------|:--------|:---------------------------------------|
-| 1   | failOver(final Object object) | IResult | 全部验证后返回                                |
-| 2   | failFast(final Object object) | IResult | 快速验证后返回                                |
-| 3   | failOverThrow(final Object object) | void    | 全部验证后返回-未通过抛出 ValidRuntimeException 异常 |
-| 4   | failFastThrow(final Object object) | void    | 快速验证后返回-未通过抛出 ValidRuntimeException 异常 |
+| 1   | failOver(Object object) | IResult | 全部验证后返回                                |
+| 2   | failFast(Object object) | IResult | 快速验证后返回                                |
+| 3   | failOverThrow(Object object) | void    | 全部验证后返回-未通过抛出 ValidRuntimeException 异常 |
+| 4   | failFastThrow(Object object) | void    | 快速验证后返回-未通过抛出 ValidRuntimeException 异常 |
 
 使用起来很简单，我们以 failFast 为例：
 
@@ -347,10 +347,10 @@ ValidHelper 作为统一封装的工具类，提供单个方法校验常见的�
 
 | 序号  | 方法                                 | 返回值     | 说明                                     |
 |:----|:-----------------------------------|:--------|:---------------------------------------|
-| 1   | failOver(final Object object, final IConstraint constraint)    | IResult | 全部验证后返回                                |
-| 2   | failFast(final Object object, final IConstraint constraint)      | IResult | 快速验证后返回                                |
-| 3   | failOverThrow(final Object object, final IConstraint constraint) | void    | 全部验证后返回-未通过抛出 ValidRuntimeException 异常 |
-| 4   | failFastThrow(final Object object, final IConstraint constraint) | void    | 快速验证后返回-未通过抛出 ValidRuntimeException 异常 |
+| 1   | failOver(Object object, IConstraint constraint)    | IResult | 全部验证后返回                                |
+| 2   | failFast(Object object, IConstraint constraint)      | IResult | 快速验证后返回                                |
+| 3   | failOverThrow(Object object, IConstraint constraint) | void    | 全部验证后返回-未通过抛出 ValidRuntimeException 异常 |
+| 4   | failFastThrow(Object object, IConstraint constraint) | void    | 快速验证后返回-未通过抛出 ValidRuntimeException 异常 |
 
 ## 使用例子
 
