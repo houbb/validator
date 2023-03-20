@@ -30,7 +30,6 @@ java 开发中，参数校验是非常常见的需求。
 
 - 支持指定校验生效的条件
 
-
 # 创作目的
 
 ## hibernate-validator 无法满足的场景
@@ -404,11 +403,108 @@ IResult result = ValidHelper.failFast("", Constraints.notEmptyConstraint());
 | 3   | `@AlwaysTrueCondition`  | 永远生效的条件   | alwaysTrueCondition |
 | 4   | `@AlwaysFalseCondition` | 永远不生效的条件  | alwaysFalseCondition |
 
+# 注解自定义
+
+## 说明
+
+内置的注解，自然无法满足所有的场景。
+
+本项目中，约束和条件注解都是支持自定义的。
+
+## 约束注解 @Constraint
+
+所有系统的内置注解都可以作为学习的例子。
+
+### 定义注解
+
+以 `@AllEquals` 为例，核心的部分在 `@Constraint(AtAllEqualsConstraint.class)`。
+
+我们在 AtAllEqualsConstraint 中实现具体的约束逻辑。
+
+```java
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+@Constraint(AtAllEqualsConstraint.class)
+public @interface AllEquals {
+
+    /**
+     * 当前字段及其指定的字段 全部相等
+     * 1. 字段类型及其他字段相同
+     * @return 指定的字段列表
+     */
+    String[] value();
+
+    /**
+     * 提示消息
+     * @return 错误提示
+     */
+    String message() default "";
+
+    /**
+     * 分组信息
+     * @return 分组类
+     * @since 0.1.2
+     */
+    Class[] group() default {};
+
+}
+```
+
+### 实现逻辑
+
+推荐直接继承 `AbstractAnnotationConstraint<A>`，实现对应的逻辑即可。
+
+```java
+public class AtAllEqualsConstraint extends AbstractAnnotationConstraint<AllEquals> {
+
+    @Override
+    protected IConstraint buildConstraint(AllEquals annotation) {
+        return Constraints.allEqualsConstraint(annotation.value());
+    }
+
+}
+```
+
+## 条件注解 @Condition
+
+所有系统的内置注解都可以作为学习的例子。
+
+### 定义注解
+
+以 `@AlwaysTrueCondition` 为例，核心的部分在 `@Condition(AtAlwaysTrueCondition.class)`。
+
+我们在 AtAlwaysTrueCondition 中实现具体的约束逻辑。
+
+```java
+@Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+@Condition(AtAlwaysTrueCondition.class)
+public @interface AlwaysTrueCondition {
+}
+```
+
+### 实现逻辑
+
+推荐直接继承 `AbstractAnnotationCondition<A>`，实现对应的逻辑即可。
+
+```java
+public class AtAlwaysTrueCondition extends AbstractAnnotationCondition<AlwaysTrueCondition> {
+
+    @Override
+    protected ICondition buildCondition(AlwaysTrueCondition annotation) {
+        return Conditions.alwaysTrueCondition();
+    }
+
+}
+```
+
 # 开源地址
 
 > [validator](https://github.com/houbb/validator)
 
 # ROAD-MAP
+
+- [ ] 优化提示信息
 
 - [ ] springboot 整合
 
