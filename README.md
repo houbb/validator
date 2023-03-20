@@ -500,6 +500,10 @@ public class AtAlwaysTrueCondition extends AbstractAnnotationCondition<AlwaysTru
 
 # 开源地址
 
+为了便于大家学习使用，目前校验框架已开源。
+
+欢迎大家 fork+star，鼓励一下老马~
+
 > [validator](https://github.com/houbb/validator)
 
 # ROAD-MAP
