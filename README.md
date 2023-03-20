@@ -1,8 +1,8 @@
 # 项目介绍
 
-java 开发中，参数校验是非常常见的需求。
+java 开发中，参数校验是非常常见的需求。但是 hibernate-validator 在使用过程中，依然会存在一些问题。
 
-但是 hibernate-validator 在使用过程中，依然会存在一些问题。
+[validator](https://github.com/houbb/validator) 在 hibernate-validator 等校验工具之上，做了一些改进，使其使用更加便捷优雅，进一步提升工作效率。
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.houbb/validator/badge.svg)](http://mvnrepository.com/artifact/com.github.houbb/validator)
 [![Build Status](https://www.travis-ci.org/houbb/validator.svg?branch=master)](https://www.travis-ci.org/houbb/validator?branch=master)
