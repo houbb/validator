@@ -14,7 +14,7 @@ java 开发中，参数校验是非常常见的需求。但是 hibernate-validat
 
 ## 特性
 
-- 兼容实现jakarta bean validation（jsr-303）内置注解 
+- 兼容实现 jakarta bean validation（jsr-303）内置注解 
 
 - 兼容实现 hibernate-validation
 
