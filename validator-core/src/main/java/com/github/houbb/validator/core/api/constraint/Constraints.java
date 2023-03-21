@@ -397,6 +397,8 @@ public final class Constraints {
 
     /**
      * Range 约束
+     * @param max 最大值
+     * @param min 最小值
      * @return 长度约束
      * @since 0.2.0
      */

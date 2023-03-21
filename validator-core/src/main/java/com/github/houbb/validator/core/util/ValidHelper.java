@@ -99,6 +99,7 @@ public final class ValidHelper {
     /**
      * 快速验证后返回-抛出异常
      * @param object 对象
+     * @param constraint 约束
      * @since 0.4.0
      */
     public static void failFastThrow(final Object object,
