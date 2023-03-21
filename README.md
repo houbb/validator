@@ -374,7 +374,7 @@ ValidHelper 作为统一封装的工具类，提供单个方法校验常见的�
 用法和 bean 的类似，只是入参多了第二个约束条件。
 
 ```java
-IResult result = ValidHelper.failFast("", Constraints.notEmptyConstraint());
+IResult result = ValidHelper.failFast("", Constraints.notEmpty());
 ```
 
 ## IConstraint 对应关系
