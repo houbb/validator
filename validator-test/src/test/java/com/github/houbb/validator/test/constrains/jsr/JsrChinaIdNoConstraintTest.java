@@ -1,6 +1,5 @@
 package com.github.houbb.validator.test.constrains.jsr;
 
-import com.github.houbb.idcard.tool.basic.util.IdCardUtil;
 import com.github.houbb.validator.api.api.result.IResult;
 import com.github.houbb.validator.core.api.constraint.Constraints;
 import com.github.houbb.validator.core.util.InnerIdCardValidHelper;

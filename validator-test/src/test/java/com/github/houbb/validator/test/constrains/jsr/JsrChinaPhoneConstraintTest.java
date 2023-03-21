@@ -1,6 +1,5 @@
 package com.github.houbb.validator.test.constrains.jsr;
 
-import com.github.houbb.phone.tool.util.PhoneUtil;
 import com.github.houbb.validator.api.api.result.IResult;
 import com.github.houbb.validator.core.api.constraint.Constraints;
 import com.github.houbb.validator.core.util.ValidHelper;

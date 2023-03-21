@@ -88,7 +88,7 @@ Maven 3.X+
 <dependency>
     <groupId>com.github.houbb</groupId>
     <artifactId>validator-core</artifactId>
-    <version>0.5.0</version>
+    <version>0.6.0</version>
 </dependency>
 ```
 
@@ -238,12 +238,15 @@ java bean 的校验，基于注解是比较方便的。和 hibernate-validator �
 
 内置注解如下：
 
-| 序号  | 注解                                | value()                 | 说明                |
-|:----|:-----------------------------------|:------------------------|:------------------|
-| 1   | `@AllEquals`                       | `String[]`              | 当前字段及其指定的字段 全部相等  |
-| 2   | `@EnumRanges`                       | `Class<? extends Enum>` | 当前字段必须在枚举值指定的范围内 |
-| 3   | `@HasNotNull`                       | `String[]`              | 当前字段及其指定的字段 至少有一个不为 null |
-| 4   | `@Ranges`                       | `String[]`              | 当前字段必须在指定的范围内 |
+| 序号  | 注解            | value()                 | 说明                       |
+|:----|:--------------|:------------------------|:-------------------------|
+| 1   | `@AllEquals`  | `String[]`              | 当前字段及其指定的字段 全部相等         |
+| 2   | `@EnumRanges` | `Class<? extends Enum>` | 当前字段必须在枚举值指定的范围内         |
+| 3   | `@HasNotNull` | `String[]`              | 当前字段及其指定的字段 至少有一个不为 null |
+| 4   | `@Ranges`     | `String[]`              | 当前字段必须在指定的范围内            |
+| 4   | `@Ranges`     | `String[]`              | 当前字段必须在指定的范围内            |
+| 5   | `@ChinaPhone` |                         | 中国手机号校验                  |
+| 6   | `@ChinaIdNo`  |                         | 中国身份证校验                  |
 
 ## JSR-303 / jakarta bean validation 约束注解支持
 
