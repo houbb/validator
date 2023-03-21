@@ -15,12 +15,17 @@ import org.hibernate.validator.constraints.time.DurationMin;
 
 import javax.validation.Constraint;
 import javax.validation.constraints.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.lang.annotation.Annotation;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  *  注解与约束关系
+ *
+ *  https://jakarta.ee/specifications/bean-validation/3.0/jakarta-bean-validation-spec-3.0.html
  * @see Constraint#validatedBy() 属性。
  * @author binbin.hou
  * @since 0.1.1
@@ -35,6 +40,8 @@ public final class JsrAtConstraintMapUtil {
 
     static {
         MAP = new HashMap<>(32);
+
+        //JSR 标准 ----------------------------------------------------------------------------
         MAP.put(Null.class, AtNullConstraint.class);
         MAP.put(NotNull.class, AtNotNullConstraint.class);
         MAP.put(AssertTrue.class, AtAssertTrueConstraint.class);
@@ -49,13 +56,21 @@ public final class JsrAtConstraintMapUtil {
         MAP.put(DecimalMin.class, AtDecimalMinConstraint.class);
         MAP.put(Digits.class, AtDigitsConstraint.class);
 
-        //hibernate-validator
+        MAP.put(Email.class, AtEmailJsrConstraint.class);
+        MAP.put(NotBlank.class, AtNotBlankJsrConstraint.class);
+        MAP.put(NotEmpty.class, AtNotEmptyJsrConstraint.class);
+
+
+        //hibernate-validator ----------------------------------------------------------------------------
+        MAP.put(org.hibernate.validator.constraints.Email.class, AtEmailConstraint.class);
+        MAP.put(org.hibernate.validator.constraints.NotBlank.class, AtNotBlankConstraint.class);
+        MAP.put(org.hibernate.validator.constraints.NotEmpty.class, AtNotEmptyConstraint.class);
+
         MAP.put(CNPJ.class, AtCNPJConstraint.class);
         MAP.put(CodePointLength.class, AtCodePointLengthConstraint.class);
         MAP.put(CPF.class, AtCPFConstraint.class);
         MAP.put(CreditCardNumber.class, AtCreditCardNumberConstraint.class);
         MAP.put(EAN.class, AtEANConstraint.class);
-        MAP.put(Email.class, AtEmailConstraint.class);
         MAP.put(ISBN.class, AtISBNConstraint.class);
         MAP.put(Length.class, AtLengthConstraint.class);
         MAP.put(LuhnCheck.class, AtLuhnCheckConstraint.class);
@@ -63,8 +78,6 @@ public final class JsrAtConstraintMapUtil {
         MAP.put(Mod11Check.class, AtMod11CheckConstraint.class);
         MAP.put(NIP.class, AtNIPConstraint.class);
         MAP.put(Normalized.class, AtNormalizedConstraint.class);
-        MAP.put(NotBlank.class, AtNotBlankConstraint.class);
-        MAP.put(NotEmpty.class, AtNotEmptyConstraint.class);
         MAP.put(ParameterScriptAssert.class, AtParameterScriptAssertConstraint.class);
         MAP.put(PESEL.class, AtPESELConstraint.class);
         MAP.put(REGON.class, AtREGONConstraint.class);
