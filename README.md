@@ -14,7 +14,7 @@ java 开发中，参数校验是非常常见的需求。但是 hibernate-validat
 
 ## 特性
 
-- 兼容实现 jsr-303 注解 / jakarta bean validation
+- 兼容实现jakarta bean validation（jsr-303）内置注解 
 
 - 兼容实现 hibernate-validation
 
@@ -269,8 +269,8 @@ java bean 的校验，基于注解是比较方便的。和 hibernate-validator �
 | 16  | `@NotBlank`        | 不能为空格的约束条件         |
 | 17  | `@NotEmpty`        | 不能为空的约束条件          |
 | 18  | `@Email`           | Email 约束条件         |
-| 19  | `@Positive`        | 指定值必须为负数约束条件       |
-| 20  | `@PositiveOrZero`  | 指定值必须为负数约束条件，包含0       |
+| 19  | `@Negative`        | 指定值必须为负数约束条件       |
+| 20  | `@NegativeOrZero`  | 指定值必须为负数约束条件，包含0       |
 | 21  | `@Positive`        | 指定值必须为正数约束条件       |
 | 22  | `@PositiveOrZero`  | 指定值必须为正数约束条件，包含0   |
 
@@ -289,7 +289,6 @@ java bean 的校验，基于注解是比较方便的。和 hibernate-validator �
 | 5   | `@Email`            | Email 约束条件         |
 | 6   | `@UniqueElements`   | 元素唯一约束条件           |
 | 7   | `@Range`            | 指定范围元素约束条件         |
-
 
 # 条件注解
 
@@ -490,7 +489,7 @@ public class AtAllEqualsConstraint extends AbstractAnnotationConstraint<AllEqual
 
     @Override
     protected IConstraint buildConstraint(AllEquals annotation) {
-        return Constraints.allEqualsConstraint(annotation.value());
+        return Constraints.allEquals(annotation.value());
     }
 
 }
@@ -523,7 +522,7 @@ public class AtAlwaysTrueCondition extends AbstractAnnotationCondition<AlwaysTru
 
     @Override
     protected ICondition buildCondition(AlwaysTrueCondition annotation) {
-        return Conditions.alwaysTrueCondition();
+        return Conditions.alwaysTrue();
     }
 
 }
