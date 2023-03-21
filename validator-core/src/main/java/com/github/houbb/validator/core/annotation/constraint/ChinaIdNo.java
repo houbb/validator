@@ -25,13 +25,6 @@ import java.lang.annotation.*;
 public @interface ChinaIdNo {
 
     /**
-     * 是否校验最后一位的合法性
-     * @return 结果
-     * @since 0.6.0
-     */
-    boolean checkDigit() default true;
-
-    /**
      * 提示消息
      * @return 错误提示
      * @since 0.6.0

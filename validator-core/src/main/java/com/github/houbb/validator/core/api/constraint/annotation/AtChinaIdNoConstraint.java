@@ -16,7 +16,7 @@ public class AtChinaIdNoConstraint extends AbstractAnnotationConstraint<ChinaIdN
 
     @Override
     protected IConstraint buildConstraint(ChinaIdNo annotation) {
-        return Constraints.chinaIdNo(annotation.checkDigit());
+        return Constraints.chinaIdNo();
     }
 
 }
