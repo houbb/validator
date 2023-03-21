@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.CreditCardNumber;
  * @since 0.2.0
  */
 @ThreadSafe
-public class AtCreditCardNumberConstraint extends AbstractAnnotationConstraint<CreditCardNumber> {
+public class AtCreditCardNumberConstraintHibernate extends AbstractAnnotationConstraint<CreditCardNumber> {
 
     @Override
     protected IConstraint buildConstraint(CreditCardNumber annotation) {

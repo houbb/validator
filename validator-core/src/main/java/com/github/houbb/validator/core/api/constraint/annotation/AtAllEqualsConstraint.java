@@ -15,7 +15,7 @@ public class AtAllEqualsConstraint extends AbstractAnnotationConstraint<AllEqual
 
     @Override
     protected IConstraint buildConstraint(AllEquals annotation) {
-        return Constraints.allEqualsConstraint(annotation.value());
+        return Constraints.allEquals(annotation.value());
     }
 
 }

@@ -21,7 +21,7 @@ public class ValidBsTest {
      */
     @Test
     public void helloValidTest() {
-        IResult result = ValidBs.on(null, Constraints.notNullConstraint())
+        IResult result = ValidBs.on(null, Constraints.notNull())
                 .valid()
                 .print();
         Assert.assertFalse(result.pass());
@@ -32,7 +32,7 @@ public class ValidBsTest {
      */
     @Test
     public void helloValidAllConfigTest() {
-        IResult result = ValidBs.on(null, Constraints.notNullConstraint())
+        IResult result = ValidBs.on(null, Constraints.notNull())
                 .fail(Fails.failFast())
                 .group()
                 .validator(DefaultValidator.getInstance())
@@ -47,8 +47,8 @@ public class ValidBsTest {
      */
     @Test
     public void constraintChainTest() {
-        final IConstraint constraintChain = ConstraintChains.chain(Constraints.sizeConstraint(5, 10),
-                Constraints.sizeConstraint(10, 20));
+        final IConstraint constraintChain = ConstraintChains.chain(Constraints.size(5, 10),
+                Constraints.size(10, 20));
 
         ValidBs.on("12", constraintChain)
                 .fail(Fails.failOver())
@@ -63,8 +63,8 @@ public class ValidBsTest {
     @Test
     public void multiConstraintTest() {
         IResult result = ValidBs
-                .on("12", Constraints.sizeConstraint(5, 10),
-                        Constraints.sizeConstraint(10, 20))
+                .on("12", Constraints.size(5, 10),
+                        Constraints.size(10, 20))
                 .fail(Fails.failOver())
                 .valid();
 

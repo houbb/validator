@@ -16,7 +16,7 @@ public class AtDecimalMinConstraint extends AbstractAnnotationConstraint<Decimal
 
     @Override
     protected IConstraint buildConstraint(DecimalMin annotation) {
-        return Constraints.decimalMinConstraint(annotation.inclusive(), annotation.value());
+        return Constraints.decimalMin(annotation.inclusive(), annotation.value());
     }
 
 }

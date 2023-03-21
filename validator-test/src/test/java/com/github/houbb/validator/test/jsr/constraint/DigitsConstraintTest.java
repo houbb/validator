@@ -17,7 +17,7 @@ public class DigitsConstraintTest {
 
     @Test
     public void passIntegerTest() {
-        IResult result = ValidBs.on(12345, Constraints.digitsConstraint(5))
+        IResult result = ValidBs.on(12345, Constraints.digits(5))
             .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -25,7 +25,7 @@ public class DigitsConstraintTest {
 
     @Test
     public void passLongTest() {
-        IResult result = ValidBs.on(12345L, Constraints.digitsConstraint(5))
+        IResult result = ValidBs.on(12345L, Constraints.digits(5))
                 .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -33,7 +33,7 @@ public class DigitsConstraintTest {
 
     @Test
     public void passStringTest() {
-        IResult result = ValidBs.on("12345", Constraints.digitsConstraint(5))
+        IResult result = ValidBs.on("12345", Constraints.digits(5))
                 .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -42,7 +42,7 @@ public class DigitsConstraintTest {
     @Test
     public void passBigIntegerTest() {
         BigInteger bigInteger = new BigInteger("12345");
-        IResult result = ValidBs.on(bigInteger, Constraints.digitsConstraint(5))
+        IResult result = ValidBs.on(bigInteger, Constraints.digits(5))
                 .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -51,7 +51,7 @@ public class DigitsConstraintTest {
     @Test
     public void passBigDecimalTest() {
         BigDecimal bigInteger = new BigDecimal("12345");
-        IResult result = ValidBs.on(bigInteger, Constraints.digitsConstraint(5))
+        IResult result = ValidBs.on(bigInteger, Constraints.digits(5))
                 .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -59,7 +59,7 @@ public class DigitsConstraintTest {
 
     @Test
     public void passFractionTest() {
-        IResult result = ValidBs.on("2.23", Constraints.digitsConstraint(1,2))
+        IResult result = ValidBs.on("2.23", Constraints.digits(1,2))
                 .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -67,7 +67,7 @@ public class DigitsConstraintTest {
 
     @Test
     public void passNullTest() {
-        IResult result = ValidBs.on(null, Constraints.digitsConstraint(1, 2))
+        IResult result = ValidBs.on(null, Constraints.digits(1, 2))
                 .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -75,7 +75,7 @@ public class DigitsConstraintTest {
 
     @Test
     public void notPassTest() {
-        IResult result = ValidBs.on("123456", Constraints.digitsConstraint(5))
+        IResult result = ValidBs.on("123456", Constraints.digits(5))
 
                 .valid();
         Assert.assertFalse(result.pass());
@@ -88,7 +88,7 @@ public class DigitsConstraintTest {
      */
     @Test(expected = ClassCastException.class)
     public void unSupportClassTypeTest() {
-        IResult result = ValidBs.on(12345, Constraints.sizeConstraint(1, 2))
+        IResult result = ValidBs.on(12345, Constraints.size(1, 2))
 
                 .valid();
     }

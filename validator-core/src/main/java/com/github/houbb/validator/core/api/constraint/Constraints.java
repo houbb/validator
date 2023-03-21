@@ -3,10 +3,7 @@ package com.github.houbb.validator.core.api.constraint;
 import com.github.houbb.heaven.util.common.ArgUtil;
 import com.github.houbb.validator.api.api.constraint.IConstraint;
 import com.github.houbb.validator.core.jsr.constraint.*;
-import com.github.houbb.validator.core.jsr.constraint.annotation.AtAssertFalseConstraint;
-import com.github.houbb.validator.core.jsr.constraint.annotation.AtAssertTrueConstraint;
 
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -24,9 +21,8 @@ public final class Constraints {
      * @param otherFields 其他字段名称
      * @return 约束实现
      * @since 0.1.1
-     * @see com.github.houbb.validator.core.annotation.constraint.AllEquals 全部相等注解
      */
-    public static IConstraint allEqualsConstraint(String ... otherFields) {
+    public static IConstraint allEquals(String ... otherFields) {
         ArgUtil.notEmpty(otherFields, "otherFields");
 
         return new AllEqualsConstraint(otherFields);
@@ -38,9 +34,8 @@ public final class Constraints {
      * @param otherFields 其他字段
      * @return 约束类
      * @since 0.1.1
-     * @see com.github.houbb.validator.core.annotation.constraint.HasNotNull 至少一个不为空
      */
-    public static IConstraint hasNotNullConstraint(String ... otherFields) {
+    public static IConstraint hasNotNull(String ... otherFields) {
         ArgUtil.notEmpty(otherFields, "otherFields");
         return new HasNotNullConstraint(otherFields);
     }
@@ -51,9 +46,8 @@ public final class Constraints {
      * @param enumClass 枚举类，不可为空
      * @return 约束类
      * @since 0.1.1
-     * @see com.github.houbb.validator.core.annotation.constraint.EnumRanges 枚举类指定范围注解
      */
-    public static IConstraint enumRangesConstraint(final Class<? extends Enum> enumClass) {
+    public static IConstraint enumRanges(final Class<? extends Enum> enumClass) {
         ArgUtil.notNull(enumClass, "enumClass");
 
         return new EnumRangesConstraint(enumClass);
@@ -65,9 +59,8 @@ public final class Constraints {
      * @param strings 对象范围
      * @return 约束类
      * @since 0.1.1
-     * @see com.github.houbb.validator.core.annotation.constraint.Ranges String 指定范围内注解
      */
-    public static IConstraint rangesConstraint(String ... strings) {
+    public static IConstraint ranges(String ... strings) {
         ArgUtil.notEmpty(strings, "strings");
 
         return new RangesConstraint(strings);
@@ -76,36 +69,32 @@ public final class Constraints {
     /**
      * @return 为 true 约束条件
      * @since 0.0.3
-     * @see javax.validation.constraints.AssertTrue
      */
-    public static IConstraint assertTrueConstraint() {
+    public static IConstraint assertTrue() {
         return new AssertTrueConstraint();
     }
 
     /**
      * @return 为 false 约束条件
      * @since 0.0.3
-     * @see javax.validation.constraints.AssertFalse
      */
-    public static IConstraint assertFalseConstraint() {
+    public static IConstraint assertFalse() {
         return new AssertFalseConstraint();
     }
 
     /**
      * @return 为 null 约束条件
      * @since 0.0.3
-     * @see javax.validation.constraints.Null
      */
-    public static IConstraint nullConstraint() {
+    public static IConstraint nulls() {
         return new NullConstraint();
     }
 
     /**
      * @return 不为 null 约束条件
      * @since 0.0.3
-     * @see javax.validation.constraints.NotNull
      */
-    public static IConstraint notNullConstraint() {
+    public static IConstraint notNull() {
         return new NotNullConstraint();
     }
 
@@ -113,10 +102,9 @@ public final class Constraints {
      * 是否在当前时间之前约束条件
      * @return 约束条件
      * @since 0.0.3
-     * @see javax.validation.constraints.Past
      */
-    public static IConstraint pastConstraint() {
-        return new PastConstraint(new Date());
+    public static IConstraint past() {
+        return past(new Date());
     }
 
     /**
@@ -125,28 +113,36 @@ public final class Constraints {
      * @return 约束条件
      * @since 0.0.3
      */
-    public static IConstraint pastConstraint(final Date date) {
+    public static IConstraint past(final Date date) {
         return new PastConstraint(date);
     }
 
     /**
-     * 是否在指定时间之前约束条件
-     * @param date 阈值
+     * 是否在当前时间之前约束条件，包含当前
      * @return 约束条件
-     * @since 0.0.3
+     * @since 0.5.0
      */
-    public static IConstraint pastConstraint(final Calendar date) {
-        return new PastConstraint(date);
+    public static IConstraint pastOrPresent() {
+        return pastOrPresent(new Date());
+    }
+
+    /**
+     * 是否在当前时间之前约束条件，包含当前
+     * @param date 日期
+     * @return 约束条件
+     * @since 0.5.0
+     */
+    public static IConstraint pastOrPresent(final Date date) {
+        return new PastOrPresentConstraint(date);
     }
 
     /**
      * 是否在当前时间之后约束条件
      * @return 约束条件
      * @since 0.0.3
-     * @see javax.validation.constraints.Future
      */
-    public static IConstraint futureConstraint() {
-        return new FutureConstraint(new Date());
+    public static IConstraint future() {
+        return future(new Date());
     }
 
     /**
@@ -155,18 +151,27 @@ public final class Constraints {
      * @return 约束条件
      * @since 0.0.3
      */
-    public static IConstraint futureConstraint(final Date date) {
+    public static IConstraint future(final Date date) {
         return new FutureConstraint(date);
     }
 
     /**
-     * 是否在指定时间之后约束条件
-     * @param date 阈值
+     * 是否在当前时间之后约束条件，包含当前
      * @return 约束条件
-     * @since 0.0.3
+     * @since 0.5.0
      */
-    public static IConstraint futureConstraint(final Calendar date) {
-        return new FutureConstraint(date);
+    public static IConstraint futureOrPresent() {
+        return futureOrPresent(new Date());
+    }
+
+    /**
+     * 是否在当前时间之后约束条件，包含当前
+     * @param date 日期
+     * @return 约束条件
+     * @since 0.5.0
+     */
+    public static IConstraint futureOrPresent(Date date) {
+        return new FutureOrPresentConstraint(date);
     }
 
     /**
@@ -174,9 +179,8 @@ public final class Constraints {
      * @param regex 正则表达式
      * @return 约束条件
      * @since 0.0.3
-     * @see javax.validation.constraints.Pattern
      */
-    public static IConstraint patternConstraint(final String regex) {
+    public static IConstraint pattern(final String regex) {
         return new PatternConstraint(regex);
     }
 
@@ -186,9 +190,8 @@ public final class Constraints {
      * @param max 最大值
      * @return 约束条件
      * @since 0.0.3
-     * @see javax.validation.constraints.Size
      */
-    public static IConstraint sizeConstraint(final int min, final int max) {
+    public static IConstraint size(final int min, final int max) {
         return new SizeConstraint(min, max);
     }
 
@@ -198,7 +201,7 @@ public final class Constraints {
      * @return 约束条件
      * @since 0.1.2
      */
-    public static IConstraint sizeConstraintMin(final int min) {
+    public static IConstraint sizeMin(final int min) {
         return new SizeConstraint(min, Integer.MAX_VALUE);
     }
 
@@ -208,7 +211,7 @@ public final class Constraints {
      * @return 约束条件
      * @since 0.1.2
      */
-    public static IConstraint sizeConstraintMax(final int max) {
+    public static IConstraint sizeMax(final int max) {
         return new SizeConstraint(0, max);
     }
 
@@ -218,9 +221,8 @@ public final class Constraints {
      * @param fraction 精度
      * @return 约束条件
      * @since 0.0.3
-     * @see javax.validation.constraints.Digits
      */
-    public static IConstraint digitsConstraint(final int integer, final int fraction) {
+    public static IConstraint digits(final int integer, final int fraction) {
         return new DigitsConstraint(integer, fraction);
     }
 
@@ -230,7 +232,7 @@ public final class Constraints {
      * @return 约束条件
      * @since 0.0.3
      */
-    public static IConstraint digitsConstraint(final int integer) {
+    public static IConstraint digits(final int integer) {
         return new DigitsConstraint(integer);
     }
 
@@ -239,9 +241,8 @@ public final class Constraints {
      * @param charSequence 阈值
      * @return 约束条件
      * @since 0.0.3
-     * @see javax.validation.constraints.DecimalMax
      */
-    public static IConstraint decimalMaxConstraint(final CharSequence charSequence) {
+    public static IConstraint decimalMax(final CharSequence charSequence) {
         return new DecimalMaxConstraint(charSequence);
     }
 
@@ -252,7 +253,7 @@ public final class Constraints {
      * @return 约束条件
      * @since 0.0.3
      */
-    public static IConstraint decimalMaxConstraint(final boolean inclusive, final CharSequence charSequence) {
+    public static IConstraint decimalMax(final boolean inclusive, final CharSequence charSequence) {
         return new DecimalMaxConstraint(inclusive, charSequence);
     }
 
@@ -261,9 +262,8 @@ public final class Constraints {
      * @param charSequence 阈值
      * @return 约束条件
      * @since 0.0.3
-     * @see javax.validation.constraints.DecimalMin
      */
-    public static IConstraint decimalMinConstraint(final CharSequence charSequence) {
+    public static IConstraint decimalMin(final CharSequence charSequence) {
         return new DecimalMinConstraint(charSequence);
     }
 
@@ -274,7 +274,7 @@ public final class Constraints {
      * @return 约束条件
      * @since 0.0.3
      */
-    public static IConstraint decimalMinConstraint(final boolean inclusive, final CharSequence charSequence) {
+    public static IConstraint decimalMin(final boolean inclusive, final CharSequence charSequence) {
         return new DecimalMinConstraint(inclusive, charSequence);
     }
 
@@ -284,9 +284,8 @@ public final class Constraints {
      * @param expect 阈值
      * @return 约束条件
      * @since 0.0.3
-     * @see javax.validation.constraints.Min
      */
-    public static IConstraint minConstraint(final boolean inclusive, final long expect) {
+    public static IConstraint min(final boolean inclusive, final long expect) {
         return new MinConstraint(inclusive, expect);
     }
 
@@ -296,7 +295,7 @@ public final class Constraints {
      * @return 约束条件
      * @since 0.0.3
      */
-    public static IConstraint minConstraint(final long expect) {
+    public static IConstraint min(final long expect) {
         return new MinConstraint(expect);
     }
 
@@ -306,9 +305,8 @@ public final class Constraints {
      * @param expect 阈值
      * @return 约束条件
      * @since 0.0.3
-     * @see javax.validation.constraints.Max
      */
-    public static IConstraint maxConstraint(final boolean inclusive, final long expect) {
+    public static IConstraint max(final boolean inclusive, final long expect) {
         return new MaxConstraint(inclusive, expect);
     }
 
@@ -318,7 +316,7 @@ public final class Constraints {
      * @return 约束条件
      * @since 0.0.3
      */
-    public static IConstraint maxConstraint(final long expect) {
+    public static IConstraint max(final long expect) {
         return new MaxConstraint(expect);
     }
 
@@ -326,9 +324,8 @@ public final class Constraints {
      * 不能为空格
      * @return 空格
      * @since 0.2.0
-     * @see org.hibernate.validator.constraints.NotBlank
      */
-    public static IConstraint notBlankConstraint() {
+    public static IConstraint notBlank() {
         return new NotBlankConstraint();
     }
 
@@ -336,9 +333,8 @@ public final class Constraints {
      * 不能为空
      * @return 为空
      * @since 0.2.0
-     * @see org.hibernate.validator.constraints.NotEmpty
      */
-    public static IConstraint notEmptyConstraint() {
+    public static IConstraint notEmpty() {
         return new NotEmptyConstraint();
     }
 
@@ -348,9 +344,8 @@ public final class Constraints {
      * @param max 最大值
      * @return 长度约束
      * @since 0.2.0
-     * @see org.hibernate.validator.constraints.Length
      */
-    public static IConstraint lengthConstraint(final int min, final int max) {
+    public static IConstraint length(final int min, final int max) {
         return new LengthConstraint(min, max);
     }
 
@@ -358,9 +353,8 @@ public final class Constraints {
      * cnpj约束
      * @return 长度约束
      * @since 0.2.0
-     * @see org.hibernate.validator.constraints.br.CNPJ
      */
-    public static IConstraint cnpjConstraint() {
+    public static IConstraint cnpj() {
         return new CNPJConstraint();
     }
 
@@ -368,9 +362,8 @@ public final class Constraints {
      * CPF 约束
      * @return 长度约束
      * @since 0.2.0
-     * @see org.hibernate.validator.constraints.br.CPF
      */
-    public static IConstraint cpfConstraint() {
+    public static IConstraint cpf() {
         return new CPFConstraint();
     }
 
@@ -380,7 +373,7 @@ public final class Constraints {
      * @since 0.2.0
      * @see org.hibernate.validator.constraints.URL
      */
-    public static IConstraint urlConstraint() {
+    public static IConstraint url() {
         return new URLConstraint();
     }
 
@@ -388,9 +381,8 @@ public final class Constraints {
      * EMAIL 约束
      * @return 长度约束
      * @since 0.2.0
-     * @see org.hibernate.validator.constraints.Email
      */
-    public static IConstraint emailConstraint() {
+    public static IConstraint email() {
         return new EmailConstraint();
     }
 
@@ -398,9 +390,8 @@ public final class Constraints {
      * uniqueElements 约束
      * @return 长度约束
      * @since 0.2.0
-     * @see org.hibernate.validator.constraints.UniqueElements
      */
-    public static IConstraint uniqueElementsConstraint() {
+    public static IConstraint uniqueElements() {
         return new UniqueElementsConstraint();
     }
 
@@ -408,49 +399,44 @@ public final class Constraints {
      * Range 约束
      * @return 长度约束
      * @since 0.2.0
-     * @see org.hibernate.validator.constraints.Range
      */
-    public static IConstraint rangeConstraint(long min, long max) {
+    public static IConstraint range(long min, long max) {
         return new RangeConstraint(min, max);
     }
 
     /**
      * negative 约束
      * @return 约束
-     * @see javax.validation.constraints.Negative
      * @since 0.5.0
      */
-    public static IConstraint negativeConstraint() {
+    public static IConstraint negative() {
         return new NegativeConstraint();
     }
 
     /**
      * NegativeOrZero 约束
      * @return 约束
-     * @see javax.validation.constraints.NegativeOrZero
      * @since 0.5.0
      */
-    public static IConstraint negativeOrZeroConstraint() {
+    public static IConstraint negativeOrZero() {
         return new NegativeOrZeroConstraint();
     }
 
     /**
      * Positive 约束
      * @return 约束
-     * @see javax.validation.constraints.Positive
      * @since 0.5.0
      */
-    public static IConstraint positiveConstraint() {
+    public static IConstraint positive() {
         return new PositiveConstraint();
     }
 
     /**
      * PositiveOrZero 约束
      * @return 约束
-     * @see javax.validation.constraints.PositiveOrZero
      * @since 0.5.0
      */
-    public static IConstraint positiveOrZeroConstraint() {
+    public static IConstraint positiveOrZero() {
         return new PositiveOrZeroConstraint();
     }
 

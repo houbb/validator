@@ -14,7 +14,7 @@ public class DecimalMaxConstraintTest {
 
     @Test
     public void passTest() {
-        IResult result = ValidBs.on(99, Constraints.decimalMaxConstraint("100"))
+        IResult result = ValidBs.on(99, Constraints.decimalMax("100"))
             .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -22,7 +22,7 @@ public class DecimalMaxConstraintTest {
 
     @Test
     public void passInclusiveTest() {
-        IResult result = ValidBs.on(100, Constraints.decimalMaxConstraint(true, "100"))
+        IResult result = ValidBs.on(100, Constraints.decimalMax(true, "100"))
                 .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -30,7 +30,7 @@ public class DecimalMaxConstraintTest {
 
     @Test
     public void passNullTest() {
-        IResult result = ValidBs.on(null, Constraints.decimalMaxConstraint("100"))
+        IResult result = ValidBs.on(null, Constraints.decimalMax("100"))
                 .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -38,7 +38,7 @@ public class DecimalMaxConstraintTest {
 
     @Test
     public void notPassTest() {
-        IResult result = ValidBs.on(101, Constraints.decimalMaxConstraint("100"))
+        IResult result = ValidBs.on(101, Constraints.decimalMax("100"))
 
                 .valid();
         Assert.assertFalse(result.pass());
@@ -47,7 +47,7 @@ public class DecimalMaxConstraintTest {
 
     @Test
     public void notPassNotInclusiveTest() {
-        IResult result = ValidBs.on(100, Constraints.decimalMaxConstraint(false,"100"))
+        IResult result = ValidBs.on(100, Constraints.decimalMax(false,"100"))
 
                 .valid();
         Assert.assertFalse(result.pass());
@@ -59,7 +59,7 @@ public class DecimalMaxConstraintTest {
      */
     @Test(expected = ClassCastException.class)
     public void classCastException() {
-        IResult result = ValidBs.on(123.34f, Constraints.decimalMaxConstraint("100"))
+        IResult result = ValidBs.on(123.34f, Constraints.decimalMax("100"))
 
                 .valid();
         System.out.println(result);

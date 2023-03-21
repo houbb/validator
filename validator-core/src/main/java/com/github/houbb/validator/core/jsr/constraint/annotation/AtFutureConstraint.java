@@ -16,7 +16,7 @@ public class AtFutureConstraint extends AbstractAnnotationConstraint<Future> {
 
     @Override
     protected IConstraint buildConstraint(Future annotation) {
-        return Constraints.futureConstraint();
+        return Constraints.future();
     }
 
 }

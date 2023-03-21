@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.CodePointLength;
  * @since 0.2.0
  */
 @ThreadSafe
-public class AtCodePointLengthConstraint extends AbstractAnnotationConstraint<CodePointLength> {
+public class AtCodePointLengthConstraintHibernate extends AbstractAnnotationConstraint<CodePointLength> {
 
     @Override
     protected IConstraint buildConstraint(CodePointLength annotation) {

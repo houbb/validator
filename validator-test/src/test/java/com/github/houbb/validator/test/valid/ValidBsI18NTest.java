@@ -22,7 +22,7 @@ public class ValidBsI18NTest {
     @Test
     public void i18nEnTest() {
         Locale.setDefault(Locale.ENGLISH);
-        IResult result = ValidBs.on(null, Constraints.notNullConstraint())
+        IResult result = ValidBs.on(null, Constraints.notNull())
                 .valid()
                 .print();
 
@@ -36,7 +36,7 @@ public class ValidBsI18NTest {
     @Test
     public void i18nZhTest() {
         Locale.setDefault(Locale.CHINESE);
-        IResult result = ValidBs.on(null, Constraints.notNullConstraint())
+        IResult result = ValidBs.on(null, Constraints.notNull())
                 .valid()
                 .print();
 

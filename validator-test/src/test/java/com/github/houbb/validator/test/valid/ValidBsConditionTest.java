@@ -25,7 +25,7 @@ public class ValidBsConditionTest {
      */
     @Test
     public void conditionTest() {
-        IValidEntry validEntry = ValidEntry.of(Constraints.sizeConstraintMin(3));
+        IValidEntry validEntry = ValidEntry.of(Constraints.sizeMin(3));
 
         final ICondition condition = new ICondition() {
             @Override

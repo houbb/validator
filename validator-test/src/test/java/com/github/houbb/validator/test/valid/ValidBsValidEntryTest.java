@@ -20,7 +20,7 @@ public class ValidBsValidEntryTest {
      */
     @Test
     public void notNullValidEntryTest() {
-        IValidEntry validEntry = ValidEntry.of(Constraints.notNullConstraint());
+        IValidEntry validEntry = ValidEntry.of(Constraints.notNull());
 
         IResult result = ValidBs.on(null, validEntry)
             .valid()
@@ -35,7 +35,7 @@ public class ValidBsValidEntryTest {
      */
     @Test
     public void messageTest() {
-        final IValidEntry validEntry = ValidEntry.of(Constraints.notNullConstraint())
+        final IValidEntry validEntry = ValidEntry.of(Constraints.notNull())
                 .message("自定义：指定值不能为空");
 
         IResult result = ValidBs.on(null, validEntry)
@@ -51,10 +51,10 @@ public class ValidBsValidEntryTest {
      */
     @Test
     public void groupTest() {
-        final IValidEntry firstEntry = ValidEntry.of(Constraints.sizeConstraint(5, 10))
+        final IValidEntry firstEntry = ValidEntry.of(Constraints.size(5, 10))
                 .group(String.class);
 
-        final IValidEntry otherEntry = ValidEntry.of(Constraints.sizeConstraint(3, 20))
+        final IValidEntry otherEntry = ValidEntry.of(Constraints.size(3, 20))
                 .group(Integer.class);
 
         IResult result = ValidBs

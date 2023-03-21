@@ -188,7 +188,7 @@ public abstract class AbstractValidator implements IValidator {
                 .validGroup(validGroup);
 
         // 构建调用链
-        ICondition condition = ConditionChains.chain(Conditions.groupCondition(),
+        ICondition condition = ConditionChains.chain(Conditions.group(),
                 validatorEntry.condition());
 
         // 返回结果

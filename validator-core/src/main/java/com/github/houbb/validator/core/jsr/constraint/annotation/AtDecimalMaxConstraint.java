@@ -16,7 +16,7 @@ public class AtDecimalMaxConstraint extends AbstractAnnotationConstraint<Decimal
 
     @Override
     protected IConstraint buildConstraint(DecimalMax annotation) {
-        return Constraints.decimalMaxConstraint(annotation.inclusive(), annotation.value());
+        return Constraints.decimalMax(annotation.inclusive(), annotation.value());
     }
 
 }

@@ -16,7 +16,7 @@ public class AtMaxConstraint extends AbstractAnnotationConstraint<Max> {
 
     @Override
     protected IConstraint buildConstraint(Max annotation) {
-        return Constraints.maxConstraint(annotation.value());
+        return Constraints.max(annotation.value());
     }
 
 }

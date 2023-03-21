@@ -16,7 +16,7 @@ public class AtNullConstraint extends AbstractAnnotationConstraint<Null> {
 
     @Override
     protected IConstraint buildConstraint(Null annotation) {
-        return Constraints.nullConstraint();
+        return Constraints.nulls();
     }
 
 }

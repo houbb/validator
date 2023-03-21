@@ -17,7 +17,7 @@ public class AtAssertTrueConstraint extends AbstractAnnotationConstraint<AssertT
 
     @Override
     protected IConstraint buildConstraint(AssertTrue annotation) {
-        return Constraints.assertTrueConstraint();
+        return Constraints.assertTrue();
     }
 
 }

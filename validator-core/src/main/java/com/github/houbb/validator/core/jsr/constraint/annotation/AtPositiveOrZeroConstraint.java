@@ -16,7 +16,7 @@ public class AtPositiveOrZeroConstraint extends AbstractAnnotationConstraint<Pos
 
     @Override
     protected IConstraint buildConstraint(PositiveOrZero annotation) {
-        return Constraints.positiveOrZeroConstraint();
+        return Constraints.positiveOrZero();
     }
 
 }

@@ -2,7 +2,6 @@ package com.github.houbb.validator.core.api.condition.annotation;
 
 import com.github.houbb.validator.api.api.condition.ICondition;
 import com.github.houbb.validator.core.annotation.condition.AlwaysTrueCondition;
-import com.github.houbb.validator.core.annotation.condition.EqualsCondition;
 import com.github.houbb.validator.core.api.condition.Conditions;
 
 /**
@@ -14,7 +13,7 @@ public class AtAlwaysTrueCondition extends AbstractAnnotationCondition<AlwaysTru
 
     @Override
     protected ICondition buildCondition(AlwaysTrueCondition annotation) {
-        return Conditions.alwaysTrueCondition();
+        return Conditions.alwaysTrue();
     }
 
 }

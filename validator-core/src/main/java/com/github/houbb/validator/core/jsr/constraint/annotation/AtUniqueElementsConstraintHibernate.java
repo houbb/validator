@@ -12,11 +12,11 @@ import org.hibernate.validator.constraints.UniqueElements;
  * @since 0.2.0
  */
 @ThreadSafe
-public class AtUniqueElementsConstraint extends AbstractAnnotationConstraint<UniqueElements> {
+public class AtUniqueElementsConstraintHibernate extends AbstractAnnotationConstraint<UniqueElements> {
 
     @Override
     protected IConstraint buildConstraint(UniqueElements annotation) {
-        return Constraints.uniqueElementsConstraint();
+        return Constraints.uniqueElements();
     }
 
 }

@@ -14,7 +14,7 @@ public class DecimalMinConstraintTest {
 
     @Test
     public void passTest() {
-        IResult result = ValidBs.on(101, Constraints.decimalMinConstraint("100"))
+        IResult result = ValidBs.on(101, Constraints.decimalMin("100"))
             .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -22,7 +22,7 @@ public class DecimalMinConstraintTest {
 
     @Test
     public void passInclusiveTest() {
-        IResult result = ValidBs.on(100, Constraints.decimalMinConstraint(true, "100"))
+        IResult result = ValidBs.on(100, Constraints.decimalMin(true, "100"))
                 .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -30,7 +30,7 @@ public class DecimalMinConstraintTest {
 
     @Test
     public void passNullTest() {
-        IResult result = ValidBs.on(null, Constraints.decimalMinConstraint("100"))
+        IResult result = ValidBs.on(null, Constraints.decimalMin("100"))
                 .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -38,7 +38,7 @@ public class DecimalMinConstraintTest {
 
     @Test
     public void notPassTest() {
-        IResult result = ValidBs.on(99, Constraints.decimalMinConstraint("100"))
+        IResult result = ValidBs.on(99, Constraints.decimalMin("100"))
                 .valid();
         Assert.assertFalse(result.pass());
         System.out.println(result);
@@ -46,7 +46,7 @@ public class DecimalMinConstraintTest {
 
     @Test
     public void notPassNotInclusiveTest() {
-        IResult result = ValidBs.on(100, Constraints.decimalMinConstraint(false,"100"))
+        IResult result = ValidBs.on(100, Constraints.decimalMin(false,"100"))
                 .valid();
         Assert.assertFalse(result.pass());
         System.out.println(result);
@@ -57,7 +57,7 @@ public class DecimalMinConstraintTest {
      */
     @Test(expected = ClassCastException.class)
     public void classCastException() {
-        IResult result = ValidBs.on(123.34f, Constraints.decimalMinConstraint("100"))
+        IResult result = ValidBs.on(123.34f, Constraints.decimalMin("100"))
                 .valid();
         System.out.println(result);
     }

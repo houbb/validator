@@ -14,7 +14,7 @@ public class NotNullConstraintTest {
 
     @Test
     public void notNullPassTest() {
-        IResult result = ValidBs.on("", Constraints.notNullConstraint())
+        IResult result = ValidBs.on("", Constraints.notNull())
             .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -25,7 +25,7 @@ public class NotNullConstraintTest {
      */
     @Test
     public void notNullNotPassTest() {
-        IResult result = ValidBs.on(null, Constraints.notNullConstraint())
+        IResult result = ValidBs.on(null, Constraints.notNull())
                 .valid()
                 .print();
         Assert.assertFalse(result.pass());

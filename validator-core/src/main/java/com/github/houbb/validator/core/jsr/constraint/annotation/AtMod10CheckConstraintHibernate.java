@@ -3,7 +3,7 @@ package com.github.houbb.validator.core.jsr.constraint.annotation;
 import com.github.houbb.heaven.annotation.ThreadSafe;
 import com.github.houbb.validator.api.api.constraint.IConstraint;
 import com.github.houbb.validator.core.api.constraint.annotation.AbstractAnnotationConstraint;
-import org.hibernate.validator.constraints.Mod11Check;
+import org.hibernate.validator.constraints.Mod10Check;
 
 /**
  *
@@ -11,10 +11,10 @@ import org.hibernate.validator.constraints.Mod11Check;
  * @since 0.2.0
  */
 @ThreadSafe
-public class AtMod11CheckConstraint extends AbstractAnnotationConstraint<Mod11Check> {
+public class AtMod10CheckConstraintHibernate extends AbstractAnnotationConstraint<Mod10Check> {
 
     @Override
-    protected IConstraint buildConstraint(Mod11Check annotation) {
+    protected IConstraint buildConstraint(Mod10Check annotation) {
         throw new UnsupportedOperationException();
     }
 

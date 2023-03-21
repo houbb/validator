@@ -17,7 +17,7 @@ public class AtAssertFalseConstraint extends AbstractAnnotationConstraint<Assert
 
     @Override
     protected IConstraint buildConstraint(AssertFalse annotation) {
-        return Constraints.assertFalseConstraint();
+        return Constraints.assertFalse();
     }
 
 }

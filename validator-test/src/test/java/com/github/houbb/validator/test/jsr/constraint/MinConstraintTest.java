@@ -14,7 +14,7 @@ public class MinConstraintTest {
 
     @Test
     public void passTest() {
-        IResult result = ValidBs.on(101, Constraints.minConstraint(100))
+        IResult result = ValidBs.on(101, Constraints.min(100))
             .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -22,7 +22,7 @@ public class MinConstraintTest {
 
     @Test
     public void passInclusiveTest() {
-        IResult result = ValidBs.on(100, Constraints.minConstraint(true, 100))
+        IResult result = ValidBs.on(100, Constraints.min(true, 100))
                 .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -30,7 +30,7 @@ public class MinConstraintTest {
 
     @Test
     public void passNullTest() {
-        IResult result = ValidBs.on(null, Constraints.minConstraint(100))
+        IResult result = ValidBs.on(null, Constraints.min(100))
                 .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -38,7 +38,7 @@ public class MinConstraintTest {
 
     @Test
     public void notPassTest() {
-        IResult result = ValidBs.on(99, Constraints.minConstraint(100))
+        IResult result = ValidBs.on(99, Constraints.min(100))
 
                 .valid();
         Assert.assertFalse(result.pass());
@@ -50,7 +50,7 @@ public class MinConstraintTest {
      */
     @Test(expected = ClassCastException.class)
     public void classCastException() {
-        IResult result = ValidBs.on(123.34f, Constraints.minConstraint(100))
+        IResult result = ValidBs.on(123.34f, Constraints.min(100))
 
                 .valid();
         System.out.println(result);

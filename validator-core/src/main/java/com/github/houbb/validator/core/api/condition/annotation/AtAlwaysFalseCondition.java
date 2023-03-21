@@ -13,7 +13,7 @@ public class AtAlwaysFalseCondition extends AbstractAnnotationCondition<AlwaysFa
 
     @Override
     protected ICondition buildCondition(AlwaysFalseCondition annotation) {
-        return Conditions.alwaysFalseCondition();
+        return Conditions.alwaysFalse();
     }
 
 }

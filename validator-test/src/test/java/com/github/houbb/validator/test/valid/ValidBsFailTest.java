@@ -20,8 +20,8 @@ public class ValidBsFailTest {
      */
     @Test
     public void failFastTest() {
-        IResult result = ValidBs.on("12", Constraints.sizeConstraintMin(3),
-                Constraints.patternConstraint("[678]{3}"))
+        IResult result = ValidBs.on("12", Constraints.sizeMin(3),
+                Constraints.pattern("[678]{3}"))
                 .fail(Fails.failFast())
                 .valid()
                 .print();
@@ -35,8 +35,8 @@ public class ValidBsFailTest {
      */
     @Test
     public void failOverTest() {
-        IResult result = ValidBs.on("12", Constraints.sizeConstraintMin(3),
-                Constraints.patternConstraint("[678]{3}"))
+        IResult result = ValidBs.on("12", Constraints.sizeMin(3),
+                Constraints.pattern("[678]{3}"))
                 .fail(Fails.failOver())
                 .valid()
                 .print();

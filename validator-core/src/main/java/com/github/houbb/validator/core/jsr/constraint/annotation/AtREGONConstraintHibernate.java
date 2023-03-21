@@ -2,22 +2,20 @@ package com.github.houbb.validator.core.jsr.constraint.annotation;
 
 import com.github.houbb.heaven.annotation.ThreadSafe;
 import com.github.houbb.validator.api.api.constraint.IConstraint;
-import com.github.houbb.validator.core.api.constraint.Constraints;
 import com.github.houbb.validator.core.api.constraint.annotation.AbstractAnnotationConstraint;
-
-import javax.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.pl.REGON;
 
 /**
- * NotBlank 信息
+ * REGON 信息
  * @author binbin.hou
- * @since 0.5.0
+ * @since 0.2.0
  */
 @ThreadSafe
-public class AtJsrNotBlankConstraint extends AbstractAnnotationConstraint<NotBlank> {
+public class AtREGONConstraintHibernate extends AbstractAnnotationConstraint<REGON> {
 
     @Override
-    protected IConstraint buildConstraint(NotBlank annotation) {
-        return Constraints.notBlankConstraint();
+    protected IConstraint buildConstraint(REGON annotation) {
+        throw new UnsupportedOperationException();
     }
 
 }

@@ -21,7 +21,7 @@ public class ValidBsResultTest {
      */
     @Test(expected = ValidRuntimeException.class)
     public void methodsTest() {
-        IResult result = ValidBs.on("12", Constraints.sizeConstraintMin(3))
+        IResult result = ValidBs.on("12", Constraints.sizeMin(3))
                 .valid(ResultHandlers.detail())
                 .print()
                 .throwsEx();

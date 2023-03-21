@@ -17,7 +17,7 @@ public final class Conditions {
      * @since 0.0.6
      * @return 条件实现
      */
-    public static ICondition alwaysTrueCondition() {
+    public static ICondition alwaysTrue() {
         return new AlwaysTrueCondition();
     }
 
@@ -26,7 +26,7 @@ public final class Conditions {
      * @since 0.0.6
      * @return 条件实现
      */
-    public static ICondition alwaysFalseCondition() {
+    public static ICondition alwaysFalse() {
         return new AlwaysFalseCondition();
     }
 
@@ -35,7 +35,7 @@ public final class Conditions {
      * @since 0.2.0
      * @return 条件实现
      */
-    public static ICondition groupCondition() {
+    public static ICondition group() {
         return new GroupCondition();
     }
 
@@ -46,7 +46,7 @@ public final class Conditions {
      * @return 条件
      * @since 0.2.0
      */
-    public static ICondition equalsCondition(final String expect, final String fieldName) {
+    public static ICondition equals(final String expect, final String fieldName) {
         ArgUtil.notNull(expect, "expect");
         return new EqualsCondition(expect, fieldName);
     }
@@ -57,8 +57,8 @@ public final class Conditions {
      * @return 条件
      * @since 0.2.0
      */
-    public static ICondition equalsCondition(final String expect) {
-        return equalsCondition(expect, null);
+    public static ICondition equals(final String expect) {
+        return equals(expect, null);
     }
 
     /**
@@ -68,7 +68,7 @@ public final class Conditions {
      * @return 条件
      * @since 0.2.0
      */
-    public static ICondition notEqualsCondition(final Object expect, final String fieldName) {
+    public static ICondition notEquals(final Object expect, final String fieldName) {
         ArgUtil.notNull(expect, "expect");
         return new NotEqualsCondition(expect, fieldName);
     }
@@ -79,8 +79,8 @@ public final class Conditions {
      * @return 条件
      * @since 0.2.0
      */
-    public static ICondition notEqualsCondition(final Object expect) {
-        return notEqualsCondition(expect, null);
+    public static ICondition notEquals(final Object expect) {
+        return notEquals(expect, null);
     }
 
 }

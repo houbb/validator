@@ -13,7 +13,7 @@ public class AtEqualsCondition extends AbstractAnnotationCondition<EqualsConditi
 
     @Override
     protected ICondition buildCondition(EqualsCondition annotation) {
-        return Conditions.equalsCondition(annotation.value(), annotation.fieldName());
+        return Conditions.equals(annotation.value(), annotation.fieldName());
     }
 
 }

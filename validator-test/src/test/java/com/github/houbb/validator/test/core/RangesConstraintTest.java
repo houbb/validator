@@ -15,7 +15,7 @@ public class RangesConstraintTest {
 
     @Test
     public void notPassTest() {
-        IResult result = ValidBs.on("DEFINE", Constraints.rangesConstraint("FAIL_OVER",
+        IResult result = ValidBs.on("DEFINE", Constraints.ranges("FAIL_OVER",
                 "FAIL_FAST"))
             .valid();
 
@@ -24,7 +24,7 @@ public class RangesConstraintTest {
 
     @Test
     public void passTest(){
-        IResult result = ValidBs.on("FAIL_OVER", Constraints.rangesConstraint("FAIL_OVER",
+        IResult result = ValidBs.on("FAIL_OVER", Constraints.ranges("FAIL_OVER",
                 "FAIL_FAST"))
                 .valid();
 

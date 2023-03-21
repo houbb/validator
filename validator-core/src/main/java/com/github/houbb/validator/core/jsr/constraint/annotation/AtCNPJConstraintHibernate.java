@@ -4,19 +4,19 @@ import com.github.houbb.heaven.annotation.ThreadSafe;
 import com.github.houbb.validator.api.api.constraint.IConstraint;
 import com.github.houbb.validator.core.api.constraint.annotation.AbstractAnnotationConstraint;
 import com.github.houbb.validator.core.api.constraint.Constraints;
-import org.hibernate.validator.constraints.br.CPF;
+import org.hibernate.validator.constraints.br.CNPJ;
 
 /**
- * CPF 信息
+ * CNPJ 信息
  * @author binbin.hou
  * @since 0.2.0
  */
 @ThreadSafe
-public class AtCPFConstraint extends AbstractAnnotationConstraint<CPF> {
+public class AtCNPJConstraintHibernate extends AbstractAnnotationConstraint<CNPJ> {
 
     @Override
-    protected IConstraint buildConstraint(CPF annotation) {
-        return Constraints.cpfConstraint();
+    protected IConstraint buildConstraint(CNPJ annotation) {
+        return Constraints.cnpj();
     }
 
 }

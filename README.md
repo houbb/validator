@@ -14,9 +14,9 @@ java 开发中，参数校验是非常常见的需求。但是 hibernate-validat
 
 ## 特性
 
-- 支持 fluent-validation
+- 兼容实现 jsr-303 注解 / jakarta bean validation
 
-- 支持 jsr-303 注解
+- 兼容实现 hibernate-validation
 
 - 支持 i18n
 
@@ -88,7 +88,7 @@ Maven 3.X+
 <dependency>
     <groupId>com.github.houbb</groupId>
     <artifactId>validator-core</artifactId>
-    <version>0.4.0</version>
+    <version>0.5.0</version>
 </dependency>
 ```
 
@@ -245,32 +245,51 @@ java bean 的校验，基于注解是比较方便的。和 hibernate-validator �
 | 3   | `@HasNotNull`                       | `String[]`              | 当前字段及其指定的字段 至少有一个不为 null |
 | 4   | `@Ranges`                       | `String[]`              | 当前字段必须在指定的范围内 |
 
-## JSR-303 + hibernate-validator 约束注解支持
+## JSR-303 / jakarta bean validation 约束注解支持
 
-| 序号  | 注解             | 说明            |
-|:----|:---------------|:--------------|
-| 1   | `@AssertTrue`  | 为 true 约束条件   |
-| 2   | `@AssertFalse` | 为 false 约束条件  |
-| 3   | `@Null`        | 为 null 约束条件   |
-| 4   | `@NotNull`     | 不为 null 约束条件  |
-| 5   | `@Past`        | 是否在当前时间之前约束条件 |
-| 6   | `@Future`      | 是否在当前时间之后约束条件 |
-| 7   | `@Pattern`     | 正则表达式约束条件     |
-| 8   | `@Size`        | 在指定范围内的约束条件   |
-| 9   | `@Digits`      | 数字位数的约束条件     |
-| 10  | `@DecimalMax`  | 最大数字的约束条件     |
-| 11  | `@DecimalMin`  | 最小数字的约束条件     |
-| 12  | `@Min`         | 最小的约束条件       |
-| 13  | `@Max`         | 最大的约束条件       |
-| 13  | `@NotBlank`    | 不能为空格的约束条件    |
-| 14  | `@NotEmpty`    | 不能为空的约束条件     |
-| 15  | `@Length`    | 长度的约束条件       |
-| 16  | `@CNPJ`    | CNPJ 约束条件     |
-| 17  | `@CPF`    | CPF 约束条件      |
-| 18  | `@URL`    | URL 约束条件      |
-| 18  | `@Email`    | Email 约束条件    |
-| 19  | `@UniqueElements`    | 元素唯一约束条件      |
-| 20  | `@Range`    | 指定范围元素约束条件    |
+> [jakarta-bean-validation-spec-3.0](https://jakarta.ee/specifications/bean-validation/3.0/jakarta-bean-validation-spec-3.0.html#builtinconstraints-futureorpresent)
+
+| 序号  | 注解                 | 说明                 |
+|:----|:-------------------|:-------------------|
+| 1   | `@AssertTrue`      | 为 true 约束条件        |
+| 2   | `@AssertFalse`     | 为 false 约束条件       |
+| 3   | `@Null`            | 为 null 约束条件        |
+| 4   | `@NotNull`         | 不为 null 约束条件       |
+| 5   | `@Past`            | 是否在当前时间之前约束条件      |
+| 6   | `@PastOrPresent`   | 是否在当前时间之前约束条件，包含当前 |
+| 7   | `@Future`          | 是否在当前时间之后约束条件      |
+| 8   | `@FutureOrPresent` | 是否在当前时间之后约束条件，包含当前 |
+| 9   | `@Pattern`         | 正则表达式约束条件          |
+| 10  | `@Size`            | 在指定范围内的约束条件        |
+| 11  | `@Digits`          | 数字位数的约束条件          |
+| 12  | `@DecimalMax`      | 最大数字的约束条件          |
+| 13  | `@DecimalMin`      | 最小数字的约束条件          |
+| 14  | `@Min`             | 最小的约束条件            |
+| 15  | `@Max`             | 最大的约束条件            |
+| 16  | `@NotBlank`        | 不能为空格的约束条件         |
+| 17  | `@NotEmpty`        | 不能为空的约束条件          |
+| 18  | `@Email`           | Email 约束条件         |
+| 19  | `@Positive`        | 指定值必须为负数约束条件       |
+| 20  | `@PositiveOrZero`  | 指定值必须为负数约束条件，包含0       |
+| 21  | `@Positive`        | 指定值必须为正数约束条件       |
+| 22  | `@PositiveOrZero`  | 指定值必须为正数约束条件，包含0   |
+
+## hibernate-validator 约束注解支持
+
+> [hibernate-validator 内置注解](https://docs.jboss.org/hibernate/validator/8.0/reference/en-US/html_single/#section-builtin-constraints)
+
+实现了常见的几个，后续将陆续完善：
+
+| 序号  | 注解                  | 说明                 |
+|:----|:--------------------|:-------------------|
+| 1   | `@NotBlank`         | 不能为空格的约束条件         |
+| 2   | `@NotEmpty`         | 不能为空的约束条件          |
+| 3   | `@Length`           | 长度的约束条件            |
+| 4   | `@URL`              | URL 约束条件           |
+| 5   | `@Email`            | Email 约束条件         |
+| 6   | `@UniqueElements`   | 元素唯一约束条件           |
+| 7   | `@Range`            | 指定范围元素约束条件         |
+
 
 # 条件注解
 
@@ -363,45 +382,57 @@ IResult result = ValidHelper.failFast("", Constraints.notEmptyConstraint());
 
 注解和常见的接口方法一一对应，所有的约束方法在 `Constraints` 工具类中。 
 
-| 序号  | 注解             | 说明            | 对应方法                     |
-|:----|:---------------|:--------------|:-------------------------|
-| 1   | `@AssertTrue`  | 为 true 约束条件   | assertTrueConstraint     |
-| 2   | `@AssertFalse` | 为 false 约束条件  | assertFalseConstraint    |
-| 3   | `@Null`        | 为 null 约束条件   | nullConstraint           |
-| 4   | `@NotNull`     | 不为 null 约束条件  | notNullConstraint        |
-| 5   | `@Past`        | 是否在当前时间之前约束条件 | pastConstraint           |
-| 6   | `@Future`      | 是否在当前时间之后约束条件 | futureConstraint         |
-| 7   | `@Pattern`     | 正则表达式约束条件     | patternConstraint        |
-| 8   | `@Size`        | 在指定范围内的约束条件   | sizeConstraint           |
-| 9   | `@Digits`      | 数字位数的约束条件     | digitsConstraint         |
-| 10  | `@DecimalMax`  | 最大数字的约束条件     | decimalMaxConstraint     |
-| 11  | `@DecimalMin`  | 最小数字的约束条件     | decimalMinConstraint     |
-| 12  | `@Min`         | 最小的约束条件       | minConstraint            |
-| 13  | `@Max`         | 最大的约束条件       | maxConstraint            |
-| 13  | `@NotBlank`    | 不能为空格的约束条件    | notBlankConstraint       |
-| 14  | `@NotEmpty`    | 不能为空的约束条件     | notEmptyConstraint       |
-| 15  | `@Length`    | 长度的约束条件       | lengthConstraint         |
-| 16  | `@CNPJ`    | CNPJ 约束条件     | cnpjConstraint           |
-| 17  | `@CPF`    | CPF 约束条件      | cpfConstraint            |
-| 18  | `@URL`    | URL 约束条件      | urlConstraint            |
-| 18  | `@Email`    | Email 约束条件    | emailConstraint          |
-| 19  | `@UniqueElements`    | 元素唯一约束条件      | uniqueElementsConstraint |
-| 20  | `@Range`    | 指定范围元素约束条件    | rangeConstraint          |
-| 21   | `@AllEquals`     | 当前字段及其指定的字段 全部相等  | allEqualsConstraint      |
-| 22   | `@EnumRanges`  | 当前字段必须在枚举值指定的范围内 | enumRangesConstraint     |
-| 23   | `@HasNotNull`     | 当前字段及其指定的字段 至少有一个不为 null | hasNotNullConstraint     |
-| 24   | `@Ranges`     | 当前字段必须在指定的范围内 | rangesConstraint         |
+### JSR-303 / jakarta bean validation 约束注解支持
 
-### 条件注解
+| 序号  | 注解                 | 说明                 | 对应方法              |
+|:----|:-------------------|:-------------------|:------------------|
+| 1   | `@AssertTrue`      | 为 true 约束条件        | assertTrue()      |
+| 2   | `@AssertFalse`     | 为 false 约束条件       | assertFalse()     |
+| 3   | `@Null`            | 为 null 约束条件        | nulls()           |
+| 4   | `@NotNull`         | 不为 null 约束条件       | notNulls()        |
+| 5   | `@Past`            | 是否在当前时间之前约束条件      | past()            |
+| 6   | `@PastOrPresent`   | 是否在当前时间之前约束条件，包含当前 | pastOrPresent()   |
+| 7   | `@Future`          | 是否在当前时间之后约束条件      | future()          |
+| 8   | `@FutureOrPresent` | 是否在当前时间之后约束条件，包含当前 | futureOrPresent() |
+| 9   | `@Pattern`         | 正则表达式约束条件          | pattern()         |
+| 10  | `@Size`            | 在指定范围内的约束条件        | size()            |
+| 11  | `@Digits`          | 数字位数的约束条件          | digits()          |
+| 12  | `@DecimalMax`      | 最大数字的约束条件          | decimalMax()      |
+| 13  | `@DecimalMin`      | 最小数字的约束条件          | decimalMin()      |
+| 14  | `@Min`             | 最小的约束条件            | min()             |
+| 15  | `@Max`             | 最大的约束条件            | max()             |
+| 16  | `@NotBlank`        | 不能为空格的约束条件         | notBlank()        |
+| 17  | `@NotEmpty`        | 不能为空的约束条件          | notEmpty()        |
+| 18  | `@Email`           | Email 约束条件         | email()           |
+| 19  | `@Positive`        | 指定值必须为负数约束条件       | positive()        |
+| 20  | `@PositiveOrZero`  | 指定值必须为负数约束条件，包含0       | positiveOrZero()  |
+| 21  | `@Positive`        | 指定值必须为正数约束条件       | positive()        | 
+| 22  | `@PositiveOrZero`  | 指定值必须为正数约束条件，包含0   | positiveOrZero()  |
+
+### ## hibernate-validator 约束注解支持
+
+实现了常见的几个，后续将陆续完善：
+
+| 序号  | 注解                  | 说明                 | 对应方法             |
+|:----|:--------------------|:-------------------|:-----------------|
+| 1   | `@NotBlank`         | 不能为空格的约束条件         | notBlank()       |
+| 2   | `@NotEmpty`         | 不能为空的约束条件          | notEmpty()       |
+| 5   | `@Email`            | Email 约束条件         | email()          |
+| 3   | `@Length`           | 长度的约束条件            | length()         |
+| 4   | `@URL`              | URL 约束条件           | url()            |
+| 6   | `@UniqueElements`   | 元素唯一约束条件           | uniqueElements() |
+| 7   | `@Range`            | 指定范围元素约束条件         | range()          |
+
+## 条件注解
 
 注解和常见的接口方法一一对应，所有的约束方法在 `Conditions` 工具类中。
 
-| 序号  | 注解                      | 说明        | 对应方法                |
-|:----|:------------------------|:----------|:--------------------|
-| 1   | `@EqualsCondition`      | 等于指定值的条件  | equalsCondition     |
-| 2   | `@NotEqualsCondition`   | 不等于指定值的条件 | notEqualsCondition  |
-| 3   | `@AlwaysTrueCondition`  | 永远生效的条件   | alwaysTrueCondition |
-| 4   | `@AlwaysFalseCondition` | 永远不生效的条件  | alwaysFalseCondition |
+| 序号  | 注解                      | 说明        | 对应方法          |
+|:----|:------------------------|:----------|:--------------|
+| 1   | `@EqualsCondition`      | 等于指定值的条件  | equals()      |
+| 2   | `@NotEqualsCondition`   | 不等于指定值的条件 | notEquals()   |
+| 3   | `@AlwaysTrueCondition`  | 永远生效的条件   | alwaysTrue()  |
+| 4   | `@AlwaysFalseCondition` | 永远不生效的条件  | alwaysFalse() |
 
 # 注解自定义
 

@@ -16,7 +16,7 @@ public class AtPatternConstraint extends AbstractAnnotationConstraint<Pattern> {
 
     @Override
     protected IConstraint buildConstraint(Pattern annotation) {
-        return Constraints.patternConstraint(annotation.regexp());
+        return Constraints.pattern(annotation.regexp());
     }
 
 }

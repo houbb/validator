@@ -5,19 +5,18 @@ import com.github.houbb.validator.api.api.constraint.IConstraint;
 import com.github.houbb.validator.core.api.constraint.Constraints;
 import com.github.houbb.validator.core.api.constraint.annotation.AbstractAnnotationConstraint;
 
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.FutureOrPresent;
 
 /**
- * NotEmpty 信息
  * @author binbin.hou
  * @since 0.5.0
  */
 @ThreadSafe
-public class AtJsrNotEmptyConstraint extends AbstractAnnotationConstraint<NotEmpty> {
+public class AtFutureOrPresentConstraint extends AbstractAnnotationConstraint<FutureOrPresent> {
 
     @Override
-    protected IConstraint buildConstraint(NotEmpty annotation) {
-        return Constraints.notEmptyConstraint();
+    protected IConstraint buildConstraint(FutureOrPresent annotation) {
+        return Constraints.futureOrPresent();
     }
 
 }

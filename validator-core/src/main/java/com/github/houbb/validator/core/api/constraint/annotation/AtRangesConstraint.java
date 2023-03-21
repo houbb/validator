@@ -15,7 +15,7 @@ public class AtRangesConstraint extends AbstractAnnotationConstraint<Ranges> {
 
     @Override
     protected IConstraint buildConstraint(Ranges annotation) {
-        return Constraints.rangesConstraint(annotation.value());
+        return Constraints.ranges(annotation.value());
     }
 
 }

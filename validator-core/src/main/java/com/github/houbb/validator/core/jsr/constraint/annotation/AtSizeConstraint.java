@@ -16,7 +16,7 @@ public class AtSizeConstraint extends AbstractAnnotationConstraint<Size> {
 
     @Override
     protected IConstraint buildConstraint(Size annotation) {
-        return Constraints.sizeConstraint(annotation.min(), annotation.max());
+        return Constraints.size(annotation.min(), annotation.max());
     }
 
 }

@@ -7,16 +7,16 @@ import com.github.houbb.validator.core.api.constraint.AbstractLessThanConstraint
 import java.util.Date;
 
 /**
- * 判断当前时间，是否在过去
+ * 判断当前时间，是否在过去。包含当前
  *
  * @author binbin.hou
  * @since 0.5.0
  */
 @ThreadSafe
-public class PastConstraint extends AbstractLessThanConstraint<Date> {
+public class PastOrPresentConstraint extends AbstractLessThanConstraint<Date> {
 
-    public PastConstraint(Date expect) {
-        super(false, expect);
+    public PastOrPresentConstraint(Date expect) {
+        super(true, expect);
     }
 
     @Override

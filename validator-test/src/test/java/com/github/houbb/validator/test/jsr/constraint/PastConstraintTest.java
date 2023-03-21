@@ -18,7 +18,7 @@ public class PastConstraintTest {
     @Test
     public void passTest() {
         Date testDate = DateUtil.getFormatDate("20190101", DateUtil.PURE_DATE_FORMAT);
-        IResult result = ValidBs.on(testDate, Constraints.pastConstraint())
+        IResult result = ValidBs.on(testDate, Constraints.past())
             .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -26,7 +26,7 @@ public class PastConstraintTest {
 
     @Test
     public void passInclusiveTest() {
-        IResult result = ValidBs.on(new Date(), Constraints.pastConstraint(new Date()))
+        IResult result = ValidBs.on(new Date(), Constraints.pastOrPresent(new Date()))
                 .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -34,7 +34,7 @@ public class PastConstraintTest {
 
     @Test
     public void passNullTest() {
-        IResult result = ValidBs.on(null, Constraints.pastConstraint(new Date()))
+        IResult result = ValidBs.on(null, Constraints.past(new Date()))
                 .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -43,7 +43,7 @@ public class PastConstraintTest {
     @Test
     public void notPassTest() {
         Date testDate = DateUtil.getFormatDate("90120101", DateUtil.PURE_DATE_FORMAT);
-        IResult result = ValidBs.on(testDate, Constraints.pastConstraint(new Date()))
+        IResult result = ValidBs.on(testDate, Constraints.past(new Date()))
 
                 .valid();
         Assert.assertFalse(result.pass());
@@ -56,7 +56,7 @@ public class PastConstraintTest {
      */
     @Test(expected = ClassCastException.class)
     public void unSupportClassTypeTest() {
-        IResult result = ValidBs.on(123, Constraints.pastConstraint())
+        IResult result = ValidBs.on(123, Constraints.past())
                 .valid();
         Assert.assertFalse(result.pass());
         System.out.println(result);

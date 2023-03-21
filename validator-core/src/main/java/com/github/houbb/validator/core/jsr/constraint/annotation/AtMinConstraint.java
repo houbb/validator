@@ -16,7 +16,7 @@ public class AtMinConstraint extends AbstractAnnotationConstraint<Min> {
 
     @Override
     protected IConstraint buildConstraint(Min annotation) {
-        return Constraints.minConstraint(annotation.value());
+        return Constraints.min(annotation.value());
     }
 
 }

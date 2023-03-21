@@ -3,19 +3,20 @@ package com.github.houbb.validator.core.jsr.constraint.annotation;
 import com.github.houbb.heaven.annotation.ThreadSafe;
 import com.github.houbb.validator.api.api.constraint.IConstraint;
 import com.github.houbb.validator.core.api.constraint.annotation.AbstractAnnotationConstraint;
-import org.hibernate.validator.constraints.br.TituloEleitoral;
+import com.github.houbb.validator.core.api.constraint.Constraints;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
- * TituloEleitoral 信息
+ * NotEmpty 信息
  * @author binbin.hou
  * @since 0.2.0
  */
 @ThreadSafe
-public class AtTituloEleitoralConstraint extends AbstractAnnotationConstraint<TituloEleitoral> {
+public class AtNotEmptyConstraintHibernate extends AbstractAnnotationConstraint<NotEmpty> {
 
     @Override
-    protected IConstraint buildConstraint(TituloEleitoral annotation) {
-        throw new UnsupportedOperationException();
+    protected IConstraint buildConstraint(NotEmpty annotation) {
+        return Constraints.notEmpty();
     }
 
 }

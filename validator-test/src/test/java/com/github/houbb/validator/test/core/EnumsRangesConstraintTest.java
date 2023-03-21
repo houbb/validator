@@ -16,7 +16,7 @@ public class EnumsRangesConstraintTest {
 
     @Test
     public void notPassTest() {
-        IResult result = ValidBs.on("DEFINE", Constraints.enumRangesConstraint(FailTypeEnum.class))
+        IResult result = ValidBs.on("DEFINE", Constraints.enumRanges(FailTypeEnum.class))
             .valid();
 
         Assert.assertFalse(result.pass());
@@ -24,7 +24,7 @@ public class EnumsRangesConstraintTest {
 
     @Test
     public void passTest(){
-        IResult result = ValidBs.on("FAIL_FAST", Constraints.enumRangesConstraint(FailTypeEnum.class))
+        IResult result = ValidBs.on("FAIL_FAST", Constraints.enumRanges(FailTypeEnum.class))
                 .valid();
 
         Assert.assertTrue(result.pass());

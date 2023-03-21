@@ -16,7 +16,7 @@ public class AtPositiveConstraint extends AbstractAnnotationConstraint<Positive>
 
     @Override
     protected IConstraint buildConstraint(Positive annotation) {
-        return Constraints.positiveConstraint();
+        return Constraints.positive();
     }
 
 }

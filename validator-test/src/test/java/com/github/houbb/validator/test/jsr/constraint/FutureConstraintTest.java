@@ -18,7 +18,7 @@ public class FutureConstraintTest {
     @Test
     public void passTest() {
         Date testDate = DateUtil.getFormatDate("90120101", DateUtil.PURE_DATE_FORMAT);
-        IResult result = ValidBs.on(testDate, Constraints.futureConstraint())
+        IResult result = ValidBs.on(testDate, Constraints.future())
             .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -27,7 +27,7 @@ public class FutureConstraintTest {
     @Test
     public void passInclusiveTest() {
         Date testDate = DateUtil.getFormatDate("90120101", DateUtil.PURE_DATE_FORMAT);
-        IResult result = ValidBs.on(testDate, Constraints.futureConstraint(new Date()))
+        IResult result = ValidBs.on(testDate, Constraints.future(new Date()))
                 .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -35,7 +35,7 @@ public class FutureConstraintTest {
 
     @Test
     public void passNullTest() {
-        IResult result = ValidBs.on(null, Constraints.futureConstraint(new Date()))
+        IResult result = ValidBs.on(null, Constraints.future(new Date()))
                 .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -44,7 +44,7 @@ public class FutureConstraintTest {
     @Test
     public void notPassTest() {
         Date testDate = DateUtil.getFormatDate("20190101", DateUtil.PURE_DATE_FORMAT);
-        IResult result = ValidBs.on(testDate, Constraints.futureConstraint(new Date()))
+        IResult result = ValidBs.on(testDate, Constraints.future(new Date()))
                 .valid();
         Assert.assertFalse(result.pass());
         System.out.println(result);
@@ -56,7 +56,7 @@ public class FutureConstraintTest {
      */
     @Test(expected = ClassCastException.class)
     public void unSupportClassTypeTest() {
-        IResult result = ValidBs.on(123, Constraints.futureConstraint())
+        IResult result = ValidBs.on(123, Constraints.future())
                 .valid();
         Assert.assertFalse(result.pass());
         System.out.println(result);

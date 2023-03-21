@@ -14,7 +14,7 @@ public class NullConstraintTest {
 
     @Test
     public void nullPassTest() {
-        IResult result = ValidBs.on(null, Constraints.nullConstraint())
+        IResult result = ValidBs.on(null, Constraints.nulls())
             .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -22,7 +22,7 @@ public class NullConstraintTest {
 
     @Test
     public void nullNotPassTest() {
-        IResult result = ValidBs.on("", Constraints.nullConstraint())
+        IResult result = ValidBs.on("", Constraints.nulls())
 
                 .valid();
         Assert.assertFalse(result.pass());

@@ -47,7 +47,9 @@ public final class JsrAtConstraintMapUtil {
         MAP.put(AssertTrue.class, AtAssertTrueConstraint.class);
         MAP.put(AssertFalse.class, AtAssertFalseConstraint.class);
         MAP.put(Past.class, AtPastConstraint.class);
+        MAP.put(PastOrPresent.class, AtPastOrPresentConstraint.class);
         MAP.put(Future.class, AtFutureConstraint.class);
+        MAP.put(FutureOrPresent.class, AtFutureOrPresentConstraint.class);
         MAP.put(Pattern.class, AtPatternConstraint.class);
         MAP.put(Size.class, AtSizeConstraint.class);
         MAP.put(Min.class, AtMinConstraint.class);
@@ -57,9 +59,9 @@ public final class JsrAtConstraintMapUtil {
         MAP.put(Digits.class, AtDigitsConstraint.class);
 
         //JSR 2.0
-        MAP.put(Email.class, AtJsrEmailConstraint.class);
-        MAP.put(NotBlank.class, AtJsrNotBlankConstraint.class);
-        MAP.put(NotEmpty.class, AtJsrNotEmptyConstraint.class);
+        MAP.put(Email.class, AtEmailConstraint.class);
+        MAP.put(NotBlank.class, AtNotBlankConstraint.class);
+        MAP.put(NotEmpty.class, AtNotEmptyConstraint.class);
         MAP.put(Positive.class, AtPositiveConstraint.class);
         MAP.put(PositiveOrZero.class, AtPositiveOrZeroConstraint.class);
         MAP.put(Negative.class, AtNegativeConstraint.class);
@@ -67,32 +69,32 @@ public final class JsrAtConstraintMapUtil {
 
 
         //hibernate-validator ----------------------------------------------------------------------------
-        MAP.put(org.hibernate.validator.constraints.Email.class, AtEmailConstraint.class);
-        MAP.put(org.hibernate.validator.constraints.NotBlank.class, AtNotBlankConstraint.class);
-        MAP.put(org.hibernate.validator.constraints.NotEmpty.class, AtNotEmptyConstraint.class);
-        MAP.put(Length.class, AtLengthConstraint.class);
-        MAP.put(UniqueElements.class, AtUniqueElementsConstraint.class);
-        MAP.put(URL.class, AtURLConstraint.class);
+        MAP.put(org.hibernate.validator.constraints.Email.class, AtEmailConstraintHibernate.class);
+        MAP.put(org.hibernate.validator.constraints.NotBlank.class, AtNotBlankConstraintHibernate.class);
+        MAP.put(org.hibernate.validator.constraints.NotEmpty.class, AtNotEmptyConstraintHibernate.class);
+        MAP.put(Length.class, AtLengthConstraintHibernate.class);
+        MAP.put(UniqueElements.class, AtUniqueElementsConstraintHibernate.class);
+        MAP.put(URL.class, AtURLConstraintHibernate.class);
 
         // not support
-        MAP.put(DurationMax.class, AtDurationMaxConstraint.class);
-        MAP.put(DurationMin.class, AtDurationMinConstraint.class);
-        MAP.put(CNPJ.class, AtCNPJConstraint.class);
-        MAP.put(CPF.class, AtCPFConstraint.class);
-        MAP.put(CodePointLength.class, AtCodePointLengthConstraint.class);
-        MAP.put(CreditCardNumber.class, AtCreditCardNumberConstraint.class);
-        MAP.put(EAN.class, AtEANConstraint.class);
-        MAP.put(ISBN.class, AtISBNConstraint.class);
-        MAP.put(LuhnCheck.class, AtLuhnCheckConstraint.class);
-        MAP.put(Mod10Check.class, AtMod10CheckConstraint.class);
-        MAP.put(Mod11Check.class, AtMod11CheckConstraint.class);
-        MAP.put(NIP.class, AtNIPConstraint.class);
-        MAP.put(Normalized.class, AtNormalizedConstraint.class);
-        MAP.put(ParameterScriptAssert.class, AtParameterScriptAssertConstraint.class);
-        MAP.put(PESEL.class, AtPESELConstraint.class);
-        MAP.put(REGON.class, AtREGONConstraint.class);
-        MAP.put(ScriptAssert.class, AtScriptAssertConstraint.class);
-        MAP.put(TituloEleitoral.class, AtTituloEleitoralConstraint.class);
+        MAP.put(DurationMax.class, AtDurationMaxConstraintHibernate.class);
+        MAP.put(DurationMin.class, AtDurationMinConstraintHibernate.class);
+        MAP.put(CNPJ.class, AtCNPJConstraintHibernate.class);
+        MAP.put(CPF.class, AtCPFConstraintHibernate.class);
+        MAP.put(CodePointLength.class, AtCodePointLengthConstraintHibernate.class);
+        MAP.put(CreditCardNumber.class, AtCreditCardNumberConstraintHibernate.class);
+        MAP.put(EAN.class, AtEANConstraintHibernate.class);
+        MAP.put(ISBN.class, AtISBNConstraintHibernate.class);
+        MAP.put(LuhnCheck.class, AtLuhnCheckConstraintHibernate.class);
+        MAP.put(Mod10Check.class, AtMod10CheckConstraintHibernate.class);
+        MAP.put(Mod11Check.class, AtMod11CheckConstraintHibernate.class);
+        MAP.put(NIP.class, AtNIPConstraintHibernate.class);
+        MAP.put(Normalized.class, AtNormalizedConstraintHibernate.class);
+        MAP.put(ParameterScriptAssert.class, AtParameterScriptAssertConstraintHibernate.class);
+        MAP.put(PESEL.class, AtPESELConstraintHibernate.class);
+        MAP.put(REGON.class, AtREGONConstraintHibernate.class);
+        MAP.put(ScriptAssert.class, AtScriptAssertConstraintHibernate.class);
+        MAP.put(TituloEleitoral.class, AtTituloEleitoralConstraintHibernate.class);
     }
 
     /**

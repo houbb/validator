@@ -15,7 +15,7 @@ public class AtEnumRangesConstraint extends AbstractAnnotationConstraint<EnumRan
 
     @Override
     protected IConstraint buildConstraint(EnumRanges annotation) {
-        return Constraints.enumRangesConstraint(annotation.value());
+        return Constraints.enumRanges(annotation.value());
     }
 
 }

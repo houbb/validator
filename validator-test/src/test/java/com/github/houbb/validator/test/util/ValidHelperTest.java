@@ -55,7 +55,7 @@ public class ValidHelperTest {
      */
     @Test
     public void failFastAttrTest() {
-        IResult result = ValidHelper.failFast("", Constraints.notEmptyConstraint());
+        IResult result = ValidHelper.failFast("", Constraints.notEmpty());
         Assert.assertFalse(result.pass());
         System.out.println(result);
     }
@@ -63,7 +63,7 @@ public class ValidHelperTest {
 
     @Test
     public void failOverAttrTest() {
-        IResult result = ValidHelper.failOver("", Constraints.notEmptyConstraint());
+        IResult result = ValidHelper.failOver("", Constraints.notEmpty());
         Assert.assertFalse(result.pass());
         System.out.println(result);
     }
@@ -73,7 +73,7 @@ public class ValidHelperTest {
      */
     @Test(expected = ValidRuntimeException.class)
     public void failFastThrowAttrTest() {
-        ValidHelper.failFastThrow("", Constraints.notEmptyConstraint());
+        ValidHelper.failFastThrow("", Constraints.notEmpty());
     }
 
     /**
@@ -81,7 +81,7 @@ public class ValidHelperTest {
      */
     @Test(expected = ValidRuntimeException.class)
     public void failOverThrowAttrTest() {
-        ValidHelper.failOverThrow("", Constraints.notEmptyConstraint());
+        ValidHelper.failOverThrow("", Constraints.notEmpty());
     }
 
 }

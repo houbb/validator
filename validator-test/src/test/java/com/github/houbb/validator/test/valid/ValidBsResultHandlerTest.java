@@ -20,7 +20,7 @@ public class ValidBsResultHandlerTest {
      */
     @Test
     public void simpleTest() {
-        IResult result = ValidBs.on("12", Constraints.sizeConstraintMin(2))
+        IResult result = ValidBs.on("12", Constraints.sizeMin(2))
                 .valid(ResultHandlers.simple())
                 .print();
 
@@ -33,7 +33,7 @@ public class ValidBsResultHandlerTest {
      */
     @Test
     public void detailTest() {
-        IResult result = ValidBs.on("12", Constraints.sizeConstraintMin(2))
+        IResult result = ValidBs.on("12", Constraints.sizeMin(2))
                 .valid(ResultHandlers.detail())
                 .print();
 

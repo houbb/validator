@@ -3,19 +3,20 @@ package com.github.houbb.validator.core.jsr.constraint.annotation;
 import com.github.houbb.heaven.annotation.ThreadSafe;
 import com.github.houbb.validator.api.api.constraint.IConstraint;
 import com.github.houbb.validator.core.api.constraint.annotation.AbstractAnnotationConstraint;
-import org.hibernate.validator.constraints.time.DurationMax;
+import com.github.houbb.validator.core.api.constraint.Constraints;
+import org.hibernate.validator.constraints.Length;
 
 /**
- * DurationMax 信息
+ * Length 信息
  * @author binbin.hou
  * @since 0.2.0
  */
 @ThreadSafe
-public class AtDurationMaxConstraint extends AbstractAnnotationConstraint<DurationMax> {
+public class AtLengthConstraintHibernate extends AbstractAnnotationConstraint<Length> {
 
     @Override
-    protected IConstraint buildConstraint(DurationMax annotation) {
-        throw  new UnsupportedOperationException();
+    protected IConstraint buildConstraint(Length annotation) {
+        return Constraints.notBlank();
     }
 
 }

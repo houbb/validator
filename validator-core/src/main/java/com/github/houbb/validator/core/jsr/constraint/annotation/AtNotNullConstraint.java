@@ -16,7 +16,7 @@ public class AtNotNullConstraint extends AbstractAnnotationConstraint<NotNull> {
 
     @Override
     protected IConstraint buildConstraint(NotNull annotation) {
-        return Constraints.notNullConstraint();
+        return Constraints.notNull();
     }
 
 }

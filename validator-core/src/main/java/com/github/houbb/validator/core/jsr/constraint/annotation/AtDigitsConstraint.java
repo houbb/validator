@@ -16,7 +16,7 @@ public class AtDigitsConstraint extends AbstractAnnotationConstraint<Digits> {
 
     @Override
     protected IConstraint buildConstraint(Digits annotation) {
-        return Constraints.digitsConstraint(annotation.integer(), annotation.fraction());
+        return Constraints.digits(annotation.integer(), annotation.fraction());
     }
 
 }

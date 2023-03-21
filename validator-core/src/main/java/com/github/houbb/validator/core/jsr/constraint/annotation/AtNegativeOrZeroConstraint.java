@@ -16,7 +16,7 @@ public class AtNegativeOrZeroConstraint extends AbstractAnnotationConstraint<Neg
 
     @Override
     protected IConstraint buildConstraint(NegativeOrZero annotation) {
-        return Constraints.negativeOrZeroConstraint();
+        return Constraints.negativeOrZero();
     }
 
 }

@@ -14,7 +14,7 @@ public class NotBlankConstraintTest {
 
     @Test
     public void passTest() {
-        IResult result = ValidBs.on(false, Constraints.assertFalseConstraint())
+        IResult result = ValidBs.on(false, Constraints.assertFalse())
             .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -22,7 +22,7 @@ public class NotBlankConstraintTest {
 
     @Test
     public void passNullTest() {
-        IResult result = ValidBs.on(null, Constraints.assertFalseConstraint())
+        IResult result = ValidBs.on(null, Constraints.assertFalse())
                 .valid();
         Assert.assertTrue(result.pass());
         System.out.println(result);
@@ -30,7 +30,7 @@ public class NotBlankConstraintTest {
 
     @Test
     public void notPassTest() {
-        IResult result = ValidBs.on(true, Constraints.assertFalseConstraint())
+        IResult result = ValidBs.on(true, Constraints.assertFalse())
                 .valid();
         Assert.assertFalse(result.pass());
         System.out.println(result);
@@ -38,7 +38,7 @@ public class NotBlankConstraintTest {
 
     @Test(expected = ClassCastException.class)
     public void unSupportClassTypeTest() {
-        IResult result = ValidBs.on("123", Constraints.assertFalseConstraint())
+        IResult result = ValidBs.on("123", Constraints.assertFalse())
                 .valid();
         Assert.assertFalse(result.pass());
         System.out.println(result);

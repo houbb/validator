@@ -13,7 +13,7 @@ public class AtNotEqualsCondition extends AbstractAnnotationCondition<NotEqualsC
 
     @Override
     protected ICondition buildCondition(NotEqualsCondition annotation) {
-        return Conditions.notEqualsCondition(annotation.value(), annotation.fieldName());
+        return Conditions.notEquals(annotation.value(), annotation.fieldName());
     }
 
 }

@@ -17,46 +17,46 @@ public class JsrNegativeOrZeroConstraintTest {
 
     @Test
     public void passTest() {
-        IResult result0 = ValidHelper.failOver(0, Constraints.negativeOrZeroConstraint());
+        IResult result0 = ValidHelper.failOver(0, Constraints.negativeOrZero());
         Assert.assertTrue(result0.pass());
 
-        IResult result1 = ValidHelper.failOver(-1, Constraints.negativeOrZeroConstraint());
+        IResult result1 = ValidHelper.failOver(-1, Constraints.negativeOrZero());
         Assert.assertTrue(result1.pass());
 
-        IResult result2 = ValidHelper.failOver(-1L, Constraints.negativeOrZeroConstraint());
+        IResult result2 = ValidHelper.failOver(-1L, Constraints.negativeOrZero());
         Assert.assertTrue(result2.pass());
 
-        IResult result3 = ValidHelper.failOver(-1.22, Constraints.negativeOrZeroConstraint());
+        IResult result3 = ValidHelper.failOver(-1.22, Constraints.negativeOrZero());
         Assert.assertTrue(result3.pass());
 
-        IResult result4 = ValidHelper.failOver("-2", Constraints.negativeOrZeroConstraint());
+        IResult result4 = ValidHelper.failOver("-2", Constraints.negativeOrZero());
         Assert.assertTrue(result4.pass());
 
-        IResult result5 = ValidHelper.failOver(new BigDecimal("-5"), Constraints.negativeOrZeroConstraint());
+        IResult result5 = ValidHelper.failOver(new BigDecimal("-5"), Constraints.negativeOrZero());
         Assert.assertTrue(result5.pass());
 
-        IResult result6 = ValidHelper.failOver(new BigInteger("-7"), Constraints.negativeOrZeroConstraint());
+        IResult result6 = ValidHelper.failOver(new BigInteger("-7"), Constraints.negativeOrZero());
         Assert.assertTrue(result6.pass());
     }
 
     @Test
     public void notPassTest() {
-        IResult result1 = ValidHelper.failOver(1, Constraints.negativeOrZeroConstraint());
+        IResult result1 = ValidHelper.failOver(1, Constraints.negativeOrZero());
         Assert.assertFalse(result1.pass());
 
-        IResult result2 = ValidHelper.failOver(1L, Constraints.negativeOrZeroConstraint());
+        IResult result2 = ValidHelper.failOver(1L, Constraints.negativeOrZero());
         Assert.assertFalse(result2.pass());
 
-        IResult result3 = ValidHelper.failOver(1.22, Constraints.negativeOrZeroConstraint());
+        IResult result3 = ValidHelper.failOver(1.22, Constraints.negativeOrZero());
         Assert.assertFalse(result3.pass());
 
-        IResult result4 = ValidHelper.failOver("2", Constraints.negativeOrZeroConstraint());
+        IResult result4 = ValidHelper.failOver("2", Constraints.negativeOrZero());
         Assert.assertFalse(result4.pass());
 
-        IResult result5 = ValidHelper.failOver(new BigDecimal("5"), Constraints.negativeOrZeroConstraint());
+        IResult result5 = ValidHelper.failOver(new BigDecimal("5"), Constraints.negativeOrZero());
         Assert.assertFalse(result5.pass());
 
-        IResult result6 = ValidHelper.failOver(new BigInteger("7"), Constraints.negativeOrZeroConstraint());
+        IResult result6 = ValidHelper.failOver(new BigInteger("7"), Constraints.negativeOrZero());
         Assert.assertFalse(result6.pass());
     }
 
