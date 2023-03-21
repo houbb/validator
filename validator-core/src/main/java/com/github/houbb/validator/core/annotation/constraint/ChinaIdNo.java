@@ -6,7 +6,7 @@
 package com.github.houbb.validator.core.annotation.constraint;
 
 import com.github.houbb.validator.api.annotation.constraint.Constraint;
-import com.github.houbb.validator.core.api.constraint.annotation.AtAllEqualsConstraint;
+import com.github.houbb.validator.core.api.constraint.annotation.AtChinaIdNoConstraint;
 
 import java.lang.annotation.*;
 
@@ -21,7 +21,7 @@ import java.lang.annotation.*;
 @Documented
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(AtAllEqualsConstraint.class)
+@Constraint(AtChinaIdNoConstraint.class)
 public @interface ChinaIdNo {
 
     /**

@@ -32,7 +32,7 @@ class ChinaPhoneConstraint extends AbstractConstraint<String> {
      *     ^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17([0,1,6,7,]))|(18[0-2,5-9]))\d{8}$
      * matches(REGEX_MOBILE) 匹配手机号
      **/
-    private static final String REGEX_MOBILE = "^((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17([0,1,6,7,]))|(18[0-2,5-9]))\\d{8}$";
+    private static final String REGEX_MOBILE = "^1[3|4|5|7|8][0-9]\\d{4,8}$";
 
     public ChinaPhoneConstraint() {
     }

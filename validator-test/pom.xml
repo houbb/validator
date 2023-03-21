@@ -26,6 +26,18 @@
             <artifactId>junit</artifactId>
         </dependency>
 
+<!--        依赖的数据量较大，不引入在验证框架中。仅用于测试-->
+        <dependency>
+            <groupId>com.github.houbb</groupId>
+            <artifactId>idcard-tool-basic</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.houbb</groupId>
+            <artifactId>phone-tool</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
     </dependencies>
 
 </project>
