@@ -403,8 +403,8 @@ IResult result = ValidHelper.failFast("", Constraints.notEmptyConstraint());
 | 16  | `@NotBlank`        | 不能为空格的约束条件         | notBlank()        |
 | 17  | `@NotEmpty`        | 不能为空的约束条件          | notEmpty()        |
 | 18  | `@Email`           | Email 约束条件         | email()           |
-| 19  | `@Positive`        | 指定值必须为负数约束条件       | positive()        |
-| 20  | `@PositiveOrZero`  | 指定值必须为负数约束条件，包含0       | positiveOrZero()  |
+| 19  | `@Negative`        | 指定值必须为负数约束条件       | negative()        |
+| 20  | `@NegativeOrZero`  | 指定值必须为负数约束条件，包含0       | negativeOrZero()  |
 | 21  | `@Positive`        | 指定值必须为正数约束条件       | positive()        | 
 | 22  | `@PositiveOrZero`  | 指定值必须为正数约束条件，包含0   | positiveOrZero()  |
 
