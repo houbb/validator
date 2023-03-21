@@ -5,19 +5,18 @@ import com.github.houbb.validator.api.api.constraint.IConstraint;
 import com.github.houbb.validator.core.api.constraint.Constraints;
 import com.github.houbb.validator.core.api.constraint.annotation.AbstractAnnotationConstraint;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NegativeOrZero;
 
 /**
- * NotBlank 信息
  * @author binbin.hou
  * @since 0.5.0
  */
 @ThreadSafe
-public class AtNotBlankJsrConstraint extends AbstractAnnotationConstraint<NotBlank> {
+public class AtNegativeOrZeroConstraint extends AbstractAnnotationConstraint<NegativeOrZero> {
 
     @Override
-    protected IConstraint buildConstraint(NotBlank annotation) {
-        return Constraints.notBlankConstraint();
+    protected IConstraint buildConstraint(NegativeOrZero annotation) {
+        return Constraints.negativeOrZeroConstraint();
     }
 
 }

@@ -56,23 +56,33 @@ public final class JsrAtConstraintMapUtil {
         MAP.put(DecimalMin.class, AtDecimalMinConstraint.class);
         MAP.put(Digits.class, AtDigitsConstraint.class);
 
-        MAP.put(Email.class, AtEmailJsrConstraint.class);
-        MAP.put(NotBlank.class, AtNotBlankJsrConstraint.class);
-        MAP.put(NotEmpty.class, AtNotEmptyJsrConstraint.class);
+        //JSR 2.0
+        MAP.put(Email.class, AtJsrEmailConstraint.class);
+        MAP.put(NotBlank.class, AtJsrNotBlankConstraint.class);
+        MAP.put(NotEmpty.class, AtJsrNotEmptyConstraint.class);
+        MAP.put(Positive.class, AtPositiveConstraint.class);
+        MAP.put(PositiveOrZero.class, AtPositiveOrZeroConstraint.class);
+        MAP.put(Negative.class, AtNegativeConstraint.class);
+        MAP.put(NegativeOrZero.class, AtNegativeOrZeroConstraint.class);
 
 
         //hibernate-validator ----------------------------------------------------------------------------
         MAP.put(org.hibernate.validator.constraints.Email.class, AtEmailConstraint.class);
         MAP.put(org.hibernate.validator.constraints.NotBlank.class, AtNotBlankConstraint.class);
         MAP.put(org.hibernate.validator.constraints.NotEmpty.class, AtNotEmptyConstraint.class);
+        MAP.put(Length.class, AtLengthConstraint.class);
+        MAP.put(UniqueElements.class, AtUniqueElementsConstraint.class);
+        MAP.put(URL.class, AtURLConstraint.class);
 
+        // not support
+        MAP.put(DurationMax.class, AtDurationMaxConstraint.class);
+        MAP.put(DurationMin.class, AtDurationMinConstraint.class);
         MAP.put(CNPJ.class, AtCNPJConstraint.class);
-        MAP.put(CodePointLength.class, AtCodePointLengthConstraint.class);
         MAP.put(CPF.class, AtCPFConstraint.class);
+        MAP.put(CodePointLength.class, AtCodePointLengthConstraint.class);
         MAP.put(CreditCardNumber.class, AtCreditCardNumberConstraint.class);
         MAP.put(EAN.class, AtEANConstraint.class);
         MAP.put(ISBN.class, AtISBNConstraint.class);
-        MAP.put(Length.class, AtLengthConstraint.class);
         MAP.put(LuhnCheck.class, AtLuhnCheckConstraint.class);
         MAP.put(Mod10Check.class, AtMod10CheckConstraint.class);
         MAP.put(Mod11Check.class, AtMod11CheckConstraint.class);
@@ -83,11 +93,6 @@ public final class JsrAtConstraintMapUtil {
         MAP.put(REGON.class, AtREGONConstraint.class);
         MAP.put(ScriptAssert.class, AtScriptAssertConstraint.class);
         MAP.put(TituloEleitoral.class, AtTituloEleitoralConstraint.class);
-        MAP.put(UniqueElements.class, AtUniqueElementsConstraint.class);
-        MAP.put(URL.class, AtURLConstraint.class);
-
-        MAP.put(DurationMax.class, AtURLConstraint.class);
-        MAP.put(DurationMin.class, AtURLConstraint.class);
     }
 
     /**

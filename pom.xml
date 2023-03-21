@@ -31,7 +31,7 @@
         <project.compiler.level>1.7</project.compiler.level>
 
         <!--============================== INTER ==============================-->
-        <heaven.version>0.1.169</heaven.version>
+        <heaven.version>0.2.0-SNAPSHOT</heaven.version>
         <hibernate-validator-annotation.version>0.0.3</hibernate-validator-annotation.version>
 
         <!--============================== OTHER ==============================-->

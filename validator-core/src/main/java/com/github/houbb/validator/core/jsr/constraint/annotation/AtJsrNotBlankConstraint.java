@@ -5,19 +5,19 @@ import com.github.houbb.validator.api.api.constraint.IConstraint;
 import com.github.houbb.validator.core.api.constraint.Constraints;
 import com.github.houbb.validator.core.api.constraint.annotation.AbstractAnnotationConstraint;
 
-import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 /**
- *
+ * NotBlank 信息
  * @author binbin.hou
  * @since 0.5.0
  */
 @ThreadSafe
-public class AtEmailJsrConstraint extends AbstractAnnotationConstraint<Email> {
+public class AtJsrNotBlankConstraint extends AbstractAnnotationConstraint<NotBlank> {
 
     @Override
-    protected IConstraint buildConstraint(Email annotation) {
-        return Constraints.emailConstraint();
+    protected IConstraint buildConstraint(NotBlank annotation) {
+        return Constraints.notBlankConstraint();
     }
 
 }

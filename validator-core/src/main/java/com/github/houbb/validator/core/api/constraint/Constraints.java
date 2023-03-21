@@ -414,4 +414,45 @@ public final class Constraints {
         return new RangeConstraint(min, max);
     }
 
+    /**
+     * negative 约束
+     * @return 约束
+     * @see javax.validation.constraints.Negative
+     * @since 0.5.0
+     */
+    public static IConstraint negativeConstraint() {
+        return new NegativeConstraint();
+    }
+
+    /**
+     * NegativeOrZero 约束
+     * @return 约束
+     * @see javax.validation.constraints.NegativeOrZero
+     * @since 0.5.0
+     */
+    public static IConstraint negativeOrZeroConstraint() {
+        return new NegativeOrZeroConstraint();
+    }
+
+    /**
+     * Positive 约束
+     * @return 约束
+     * @see javax.validation.constraints.Positive
+     * @since 0.5.0
+     */
+    public static IConstraint positiveConstraint() {
+        return new PositiveConstraint();
+    }
+
+    /**
+     * PositiveOrZero 约束
+     * @return 约束
+     * @see javax.validation.constraints.PositiveOrZero
+     * @since 0.5.0
+     */
+    public static IConstraint positiveOrZeroConstraint() {
+        return new PositiveOrZeroConstraint();
+    }
+
+
 }
