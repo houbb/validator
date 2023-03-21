@@ -2,6 +2,7 @@ package com.github.houbb.validator.core.api.constraint;
 
 import com.github.houbb.heaven.util.common.ArgUtil;
 import com.github.houbb.validator.api.api.constraint.IConstraint;
+import com.github.houbb.validator.core.annotation.constraint.ChinaPhone;
 import com.github.houbb.validator.core.jsr.constraint.*;
 
 import java.util.Date;
@@ -442,5 +443,32 @@ public final class Constraints {
         return new PositiveOrZeroConstraint();
     }
 
+    /**
+     * 中国身份证
+     * @param checkDigit 是否校验最后一位合法性
+     * @return 约束
+     * @since 0.6.0
+     */
+    public static IConstraint chinaIdNo(boolean checkDigit) {
+        return new ChinaIdNoConstraint();
+    }
+
+    /**
+     * 中国身份证
+     * @return 约束
+     * @since 0.6.0
+     */
+    public static IConstraint chinaIdNo() {
+        return chinaIdNo(true);
+    }
+
+    /**
+     * 中国手机号
+     * @return 约束
+     * @since 0.6.0
+     */
+    public static IConstraint chinaPhone() {
+        return new ChinaPhoneConstraint();
+    }
 
 }
