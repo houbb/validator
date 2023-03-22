@@ -5,6 +5,8 @@ java 开发中，参数校验是非常常见的需求。但是 hibernate-validat
 [validator](https://github.com/houbb/validator) 在 hibernate-validator 等校验工具之上，做了一些改进，使其使用更加便捷优雅，进一步提升工作效率。
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.houbb/validator/badge.svg)](http://mvnrepository.com/artifact/com.github.houbb/validator)
+[![](https://img.shields.io/badge/license-Apache2-FF0080.svg)](https://github.com/houbb/validator/blob/master/LICENSE.txt)
+[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/houbb/validator)
 [![Build Status](https://www.travis-ci.org/houbb/validator.svg?branch=master)](https://www.travis-ci.org/houbb/validator?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/houbb/validator/badge.svg?branch=master)](https://coveralls.io/github/houbb/validator?branch=master)
 
