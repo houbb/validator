@@ -70,7 +70,19 @@ public final class ValidHelper {
      * @since 0.4.0
      */
     public static IResult failOver(final Object object, final IConstraint constraint) {
-        return valid(object, constraint, Fails.failOver());
+        return failOver(object, constraint, null);
+    }
+
+    /**
+     * 全部验证后返回
+     * @param object 对象
+     * @param constraint 约束条件
+     * @param message 消息
+     * @return 结果
+     * @since 0.7.0
+     */
+    public static IResult failOver(final Object object, final IConstraint constraint, final String message) {
+        return valid(object, constraint, Fails.failOver(), message);
     }
 
     /**
@@ -82,7 +94,20 @@ public final class ValidHelper {
      */
     public static IResult failFast(final Object object,
                                    final IConstraint constraint) {
-        return valid(object, constraint, Fails.failFast());
+        return failFast(object, constraint, null);
+    }
+
+    /**
+     * 快速验证后返回
+     * @param object 对象
+     * @param constraint 约束
+     * @return 结果
+     * @since 0.7.0
+     */
+    public static IResult failFast(final Object object,
+                                   final IConstraint constraint,
+                                   final String message) {
+        return valid(object, constraint, Fails.failFast(), message);
     }
 
     /**
@@ -93,7 +118,20 @@ public final class ValidHelper {
      */
     public static void failOverThrow(final Object object,
                                      final IConstraint constraint) {
-        failOver(object, constraint).throwsEx();
+        failOverThrow(object, constraint, null);
+    }
+
+    /**
+     * 全部验证后返回-抛出异常
+     * @param object 对象
+     * @param constraint 约束
+     * @param message 消息
+     * @since 0.7.0
+     */
+    public static void failOverThrow(final Object object,
+                                     final IConstraint constraint,
+                                     final String message) {
+        failOver(object, constraint, message).throwsEx();
     }
 
     /**
@@ -104,16 +142,30 @@ public final class ValidHelper {
      */
     public static void failFastThrow(final Object object,
                                      final IConstraint constraint) {
-        failFast(object, constraint).throwsEx();
+        failFastThrow(object, constraint, null);
+    }
+
+    /**
+     * 快速验证后返回-抛出异常
+     * @param object 对象
+     * @param constraint 约束
+     * @param message 消息提醒
+     * @since 0.7.0
+     */
+    public static void failFastThrow(final Object object,
+                                     final IConstraint constraint,
+                                     final String message) {
+        failFast(object, constraint, message).throwsEx();
     }
 
     private static IResult valid(final Object object,
                                  final IConstraint constraint,
-                                 final IFail fail) {
+                                 final IFail fail,
+                                 final String message) {
         ArgUtil.notNull(constraint, "constraint");
         ArgUtil.notNull(fail, "fail");
 
-        return ValidBs.on(object, constraint)
+        return ValidBs.on(object, message, constraint)
                 .fail(fail)
                 .valid();
     }

@@ -90,8 +90,20 @@ public class ValidEntry implements IValidEntry {
      * @since 0.1.2
      */
     public static ValidEntry of(final IConstraint constraint) {
+        return of(constraint, null);
+    }
+
+    /**
+     * 创建一个对象实例
+     * @param constraint 约束实现
+     * @return 验证明细
+     * @since 0.7.0
+     */
+    public static ValidEntry of(final IConstraint constraint,
+                                final String message) {
         ValidEntry validEntry = new ValidEntry();
         validEntry.constraint(constraint);
+        validEntry.message(message);
         return validEntry;
     }
 

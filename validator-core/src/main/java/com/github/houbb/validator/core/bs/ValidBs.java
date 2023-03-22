@@ -114,12 +114,14 @@ public final class ValidBs {
      *
      * 这里必须至少指定一个 constraint，否则都没有参数时，二者会混淆。
      * @param value 对象信息
+     * @param message 提示消息
      * @param constraint 约束实现
      * @param constraints 约束实现列表
      * @return this
-     * @since 0.1.0
+     * @since 0.7.0
      */
     public static ValidBs on(final Object value,
+                             final String message,
                              final IConstraint constraint,
                              final IConstraint... constraints) {
         List<IConstraint> constraintList = ArrayUtil.arrayToList(constraints);
@@ -129,11 +131,29 @@ public final class ValidBs {
                 new IHandler<IConstraint, IValidEntry>() {
                     @Override
                     public IValidEntry handle(IConstraint constraint) {
-                        return ValidEntry.of(constraint);
+                        return ValidEntry.of(constraint, message);
                     }
                 });
 
         return on(value, validatorEntryList);
+    }
+
+    /**
+     * 指定验证的相关约束信息
+     * （1）可以验证对象，也可以验证属性
+     * （2）如果验证为 bean，会同时验证指定约束规则和注解相关约束规则。
+     *
+     * 这里必须至少指定一个 constraint，否则都没有参数时，二者会混淆。
+     * @param value 对象信息
+     * @param constraint 约束实现
+     * @param constraints 约束实现列表
+     * @return this
+     * @since 0.1.0
+     */
+    public static ValidBs on(final Object value,
+                             final IConstraint constraint,
+                             final IConstraint... constraints) {
+        return on(value, null, constraint, constraints);
     }
 
     /**

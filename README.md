@@ -88,7 +88,7 @@ Maven 3.X+
 <dependency>
     <groupId>com.github.houbb</groupId>
     <artifactId>validator-core</artifactId>
-    <version>0.6.0</version>
+    <version>0.7.0</version>
 </dependency>
 ```
 
@@ -148,12 +148,20 @@ ValidHelper 作为统一封装的工具类，提供了 java bean 校验常见的
 
 方法列表：
 
-| 序号  | 方法                            | 返回值     | 说明                                     |
-|:----|:------------------------------|:--------|:---------------------------------------|
-| 1   | failOver(Object object) | IResult | 全部验证后返回                                |
-| 2   | failFast(Object object) | IResult | 快速验证后返回                                |
-| 3   | failOverThrow(Object object) | void    | 全部验证后返回-未通过抛出 ValidRuntimeException 异常 |
-| 4   | failFastThrow(Object object) | void    | 快速验证后返回-未通过抛出 ValidRuntimeException 异常 |
+| 序号  | 方法                                                              | 返回值     | 说明                                                          |
+|:----|:----------------------------------------------------------------|:--------|:------------------------------------------------------------|
+| 1   | failOver(Object object)                                         | IResult | 全部验证后返回                                                     |
+| 2   | failFast(Object object)                                         | IResult | 快速验证后返回                                                     |
+| 3   | failOverThrow(Object object)                                    | void    | 全部验证后返回-未通过抛出异常                                             |
+| 4   | failFastThrow(Object object)                                    | void    | 快速验证后返回-未通过抛出异常                                             |
+| 5   | failOver(Object object, IConstraint Constraint)                 | IResult | 全部验证后返回，属性校验                                            |
+| 6   | failFast(Object object, IConstraint Constraint)                 | IResult | 快速验证后返回，属性校验                                            |
+| 7   | failOverThrow(Object object, IConstraint Constraint)            | void    | 全部验证后返回-未通过抛出异常，属性校验                                      |
+| 8   | failFastThrow(Object object, IConstraint Constraint)            | void    | 快速验证后返回-未通过抛出异常，属性校验                                    |
+| 9   | failOver(Object object, IConstraint Constraint, String message) | IResult | 全部验证后返回，属性校验，message 为报错信息                              |
+| 10  | failFast(Object object, IConstraint Constraint, String message)                 | IResult | 快速验证后返回，属性校验，message 为报错信息                              |
+| 11  | failOverThrow(Object object, IConstraint Constraint, String message)            | void    | 全部验证后返回-未通过抛出异常，属性校验，message 为报错信息                      |
+| 12  | failFastThrow(Object object, IConstraint Constraint, String message)            | void    | 快速验证后返回-未通过抛出异常，属性校验，message 为报错信息                      |
 
 使用起来很简单，我们以 failFast 为例：
 
